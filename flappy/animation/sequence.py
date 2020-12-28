@@ -1,47 +1,48 @@
 from math import floor
-from collections import namedtuple
+from typing import NamedTuple, Any, List
 from flappy.animation.stopwatch import StopWatch
 
-Keyframe = namedtuple('Keyframe', ['image', 'length'])
+
+Keyframe = NamedTuple('Keyframe', [('data', Any), ('length', float)])
 
 
-class Animation:
+class SequenceAnimation:
     def __init__(self, keyframes, repeat=False):
-        self.keyframes = keyframes
+        self.keyframes = keyframes  # type: List[Keyframe]
         self.repeat = repeat
-        self.timer = StopWatch()
+        self.__timer = StopWatch()
 
     def rewind(self):
-        self.timer.reset()
+        self.__timer.reset()
 
     def play(self):
-        self.timer.start()
+        self.__timer.start()
 
-    def is_playing(self):
-        return self.timer.is_measuring()
+    def is_playing(self) -> bool:
+        return self.__timer.is_measuring()
 
     def resume(self):
-        self.timer.resume()
+        self.__timer.resume()
 
     def pause(self):
-        self.timer.pause()
+        self.__timer.pause()
 
-    def cursor(self):
-        elapsed = self.timer.elapsed_time()
+    def cursor(self) -> float:
+        elapsed = self.__timer.elapsed_time()
         if self.repeat:
             animation_length = self.animation_length()
             cycles = floor(elapsed / animation_length)
             elapsed = elapsed - cycles * animation_length
         return elapsed
 
-    def image(self):
+    def data(self) -> Any:
         elapsed = self.cursor()
         for frame in self.keyframes:
             begin = 0
             if begin <= elapsed < begin + frame.length:
-                return frame.image
+                return frame.data
             begin += frame.length
-        return self.keyframes[-1].image
+        return self.keyframes[-1].data
 
-    def animation_length(self):
+    def animation_length(self) -> float:
         return sum([k.length for k in self.keyframes])

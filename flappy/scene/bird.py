@@ -1,5 +1,5 @@
 from flappy.gmath.rect import Rect
-from flappy.animation.sequence import Animation
+from flappy.animation.sequence import SequenceAnimation
 from flappy.misc.representable import Representable
 from flappy.core.observer.passthrough import PassthroughSubject
 
@@ -9,7 +9,7 @@ class Bird(Representable):
                  flap_velocity: float,
                  horizontal_velocity: float,
                  vertical_velocity: float,
-                 animation: Animation):
+                 animation: SequenceAnimation):
         self.frame = frame
         self.flap_velocity = flap_velocity
         self.horizontal_velocity = horizontal_velocity

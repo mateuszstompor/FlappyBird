@@ -11,7 +11,7 @@ class StopWatch:
         self.__last_start = None
         self.__paused = False
 
-    def elapsed_time(self):
+    def elapsed_time(self) -> float:
         if self.__paused:
             return self.__elapsed
         elif self.__last_start is None:
@@ -22,14 +22,14 @@ class StopWatch:
         self.__elapsed = time() - self.__last_start
         self.__paused = True
 
-    def is_measuring(self):
+    def is_measuring(self) -> bool:
         return self.__last_start is not None
 
     def resume(self):
         self.__paused = False
         self.__last_start = time()
 
-    def is_paused(self):
+    def is_paused(self) -> bool:
         return self.__paused
 
     def reset(self):

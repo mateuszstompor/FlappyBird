@@ -30,8 +30,7 @@ class Drawer:
 
     def present_bird(self, bird: Bird):
         rect = RectConverter.as_pygame(bird.frame, self.screen)
-        image = bird.animation.image()
-        image = pygame.transform.rotate(image, bird.current_angle)
+        image = pygame.transform.rotate(bird.animation.data(), bird.current_angle)
         self.screen.blit(image, rect)
 
     def present_base(self):
@@ -46,7 +45,7 @@ class Drawer:
         self.screen.blit(image, self.screen.get_rect())
 
     def present_wall(self, obstacle: Obstacle):
-        upper, lower = obstacle.walls
+        upper, lower = obstacle.wall
         rect = RectConverter.as_pygame(lower, self.screen)
         image = self.textures.image('pipe-green.png')
         scale = (rect[2], image.get_rect()[3])
@@ -64,5 +63,5 @@ class Drawer:
 
     @staticmethod
     def is_in_sight(obstacle: Obstacle, sight: Rect):
-        return sight.is_overlapping(obstacle.walls[0]) or sight.is_overlapping(obstacle.walls[1]) or \
-               obstacle.walls[0].is_overlapping(sight) or obstacle.walls[1].is_overlapping(sight)
+        return sight.is_overlapping(obstacle.wall.upper) or sight.is_overlapping(obstacle.wall.lower) or \
+               obstacle.wall.upper.is_overlapping(sight) or obstacle.wall.lower.is_overlapping(sight)

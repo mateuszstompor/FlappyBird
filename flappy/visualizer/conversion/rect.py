@@ -1,10 +1,8 @@
 from pygame.surface import Surface
-
-from flappy.gmath.point import Point
 from flappy.gmath.rect import Rect
-from pygame.rect import Rect as PRect
-
 from flappy.gmath.size import Size
+from flappy.gmath.point import Point
+from pygame.rect import Rect as PRect
 
 
 class RectConverter:

@@ -9,11 +9,11 @@ class CollisionDetector:
         self.collision_notifier = PassthroughSubject()
 
     def check_collisions(self, board: Board):
-        for o in board.obstacles:
-            if self.is_colliding(board.bird, o):
-                self.collision_notifier.notify(None)
+        colliding_objects = [o for o in board.obstacles if self.is_colliding(board.bird, o)]
+        for o in colliding_objects:
+            self.collision_notifier.notify([o, board.bird])
 
     @staticmethod
     def is_colliding(bird: Bird, obstacle: Obstacle):
-        return bird.frame.is_overlapping(obstacle.walls[0]) or \
-               bird.frame.is_overlapping(obstacle.walls[1])
+        return bird.frame.is_overlapping(obstacle.wall.upper) or \
+               bird.frame.is_overlapping(obstacle.wall.lower)

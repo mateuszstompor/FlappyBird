@@ -28,18 +28,14 @@ class PlayView(View, Observer):
         self.board_drawer = Drawer(self.screen)
 
     def show(self):
-        running = True
-        while running:
+        while True:
             if self.failed:
                 LostView(self.screen).show()
                 self.game.reset()
                 self.failed = False
             for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    running = False
-                elif event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_SPACE:
-                        self.game.board.bird.flap()
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+                    self.game.board.bird.flap()
             self.game.update()
             self.board_drawer.draw(self.game.board, self.background)
             self.score_drawer.draw(self.game.score_counter.score)

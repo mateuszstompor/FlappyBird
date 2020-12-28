@@ -22,6 +22,5 @@ class LostView(View):
         self.render_game_over()
         while True:
             for event in pygame.event.get():
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_SPACE:
-                        return
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+                    return
