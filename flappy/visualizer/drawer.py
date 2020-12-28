@@ -14,19 +14,35 @@ from flappy.visualizer.conversion.rect import RectConverter
 class Drawer:
     def __init__(self, screen: Surface):
         self.screen = screen
-        self.textures = TextureLibrary.with_images(['pipe-green.png', 'redbird-downflap.png'])
+        self.textures = TextureLibrary.with_images(['pipe-green.png',
+                                                    'redbird-downflap.png',
+                                                    'background-day.png',
+                                                    'background-night.png',
+                                                    'base.png'])
 
-    def draw(self, board: Board):
-        self.screen.fill((255, 255, 255))
+    def draw(self, board: Board, background):
+        self.present_background(background)
         self.present_bird(board.bird)
         for o in board.obstacles:
-            if Drawer.is_in_sight(o, Rect(Point(0, 0), Size(1, 1))):
+            if Drawer.is_in_sight(o, Rect(Point(-1, 0), Size(3, 1))):
                 self.present_wall(o)
+        self.present_base()
 
     def present_bird(self, bird: Bird):
         rect = RectConverter.as_pygame(bird.frame, self.screen)
-        image = self.textures.image('redbird-downflap.png')
-        self.screen.blit(image, rect)
+        self.screen.blit(bird.animation.image(), rect)
+
+    def present_base(self):
+        image = self.textures['base.png']
+        x = image.get_rect()[2] / 2
+        y = image.get_rect()[3] / 2
+        self.screen.blit(image, pygame.rect.Rect(self.screen.get_rect()[2] / 2 - x,
+                                                 self.screen.get_rect()[2] / 2 + 320,
+                                                 15, 15))
+
+    def present_background(self, name='background-day.png'):
+        image = self.textures.image(name)
+        self.screen.blit(image, self.screen.get_rect())
 
     def present_wall(self, obstacle: Obstacle):
         upper, lower = obstacle.walls
@@ -43,4 +59,5 @@ class Drawer:
 
     @staticmethod
     def is_in_sight(obstacle: Obstacle, sight: Rect):
-        return sight.is_overlapping(obstacle.walls[0]) or sight.is_overlapping(obstacle.walls[1])
+        return sight.is_overlapping(obstacle.walls[0]) or sight.is_overlapping(obstacle.walls[1]) or \
+               obstacle.walls[0].is_overlapping(sight) or obstacle.walls[1].is_overlapping(sight)
