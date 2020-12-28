@@ -30,7 +30,8 @@ class Drawer:
 
     def present_bird(self, bird: Bird):
         rect = RectConverter.as_pygame(bird.frame, self.screen)
-        self.screen.blit(bird.animation.image(), rect)
+        image = pygame.transform.rotate(bird.animation.image(), bird.current_angle)
+        self.screen.blit(image, rect)
 
     def present_base(self):
         image = self.textures['base.png']

@@ -23,6 +23,8 @@ class MotionEngine:
         bird.frame.origin.y -= distance
         bird.vertical_velocity = bird.vertical_velocity - self.__gravity * delta
         bird.distance_travelled += bird.horizontal_velocity * delta
+        bias = 20
+        bird.current_angle = min((bird.vertical_velocity / bird.flap_velocity) * bird.maximal_angle + bias, bird.maximal_angle)
 
     @staticmethod
     def move_terrain(board: Board, delta: float):

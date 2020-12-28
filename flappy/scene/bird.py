@@ -17,6 +17,8 @@ class Bird(Representable):
         self.distance_travelled = 0
         self.animation = animation
         self.flaps = PassthroughSubject()
+        self.current_angle = 0
+        self.maximal_angle = 40
 
     def flap(self):
         self.vertical_velocity = self.flap_velocity
