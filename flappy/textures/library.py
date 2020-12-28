@@ -7,6 +7,9 @@ class TextureLibrary:
     def __init__(self, data):
         self.data = data
 
+    def __getitem__(self, item):
+        return self.image(item)
+
     def image(self, name):
         return self.data[name]
 
