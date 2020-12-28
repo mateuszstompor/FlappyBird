@@ -5,13 +5,13 @@ from flappy.assets.pathfinder import PathFinder
 
 class TextureLibrary:
     def __init__(self, data):
-        self.data = data
+        self.__data = data
 
     def __getitem__(self, item):
         return self.image(item)
 
     def image(self, name):
-        return self.data[name]
+        return self.__data[name]
 
     @staticmethod
     def with_images(names):

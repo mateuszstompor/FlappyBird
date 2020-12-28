@@ -5,10 +5,10 @@ from flappy.assets.pathfinder import PathFinder
 
 class Player:
     def __init__(self, data):
-        self.data = data
+        self.__data = data
 
     def play(self, sound):
-        pygame.mixer.Sound.play(self.data[sound])
+        pygame.mixer.Sound.play(self.__data[sound])
 
     @staticmethod
     def with_sounds(names):
