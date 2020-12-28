@@ -37,7 +37,6 @@ class Drawer:
     def present_base(self):
         image = self.textures['base.png']
         x = image.get_rect()[2] / 2
-        y = image.get_rect()[3] / 2
         self.screen.blit(image, pygame.rect.Rect(self.screen.get_rect()[2] / 2 - x,
                                                  self.screen.get_rect()[2] / 2 + 320,
                                                  15, 15))

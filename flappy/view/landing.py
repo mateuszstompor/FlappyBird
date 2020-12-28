@@ -44,7 +44,6 @@ class LandingView(View):
     def render_button(self):
         image = self.textures['play.png']
         x = image.get_rect()[2] / 2
-        y = image.get_rect()[3] / 2
         self.screen.blit(image, pygame.rect.Rect(self.screen.get_rect()[2] / 2 - x,
                                                  self.screen.get_rect()[2] / 2 + 210,
                                                  15, 15))
@@ -52,13 +51,9 @@ class LandingView(View):
     def render_sidewalk(self):
         image = self.textures['base.png']
         x = image.get_rect()[2] / 2
-        y = image.get_rect()[3] / 2
         self.screen.blit(image, pygame.rect.Rect(self.screen.get_rect()[2] / 2 - x,
                                                  self.screen.get_rect()[2] / 2 + 300,
                                                  15, 15))
-
-    def change_background(self):
-        pass
 
     def change_bird_animation(self, animation):
         self.bird.animation = animation
