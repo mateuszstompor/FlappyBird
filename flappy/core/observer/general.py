@@ -1,6 +1,5 @@
-from abc import ABC
 from typing import Any
-from abc import abstractmethod
+from abc import ABC, abstractmethod
 
 
 class Observer(ABC):
@@ -21,6 +20,3 @@ class Subject(ABC):
     @abstractmethod
     def notify(self, event: Any):
         pass
-
-
-
