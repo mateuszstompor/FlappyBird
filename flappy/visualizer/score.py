@@ -15,11 +15,11 @@ class ScoreDrawer:
         i_image = self.__textures.image(f'{i}.png')
         screen_rect = self.screen.get_rect()
         if j == 0:
-            self.screen.blit(i_image, pygame.rect.Rect(screen_rect[3]/2 - 10, 40, 40, 40))
+            self.screen.blit(i_image, pygame.rect.Rect(screen_rect[2]/2 - 10, 40, 40, 40))
         else:
             j_image = self.__textures.image(f'{j}.png')
-            self.screen.blit(i_image, pygame.rect.Rect(screen_rect[3] / 2, 40, 40, 40))
-            self.screen.blit(j_image, pygame.rect.Rect(screen_rect[3] / 2 - 25, 40, 40, 40))
+            self.screen.blit(i_image, pygame.rect.Rect(screen_rect[2] / 2, 40, 40, 40))
+            self.screen.blit(j_image, pygame.rect.Rect(screen_rect[2] / 2 - 25, 40, 40, 40))
 
     @staticmethod
     def image_names():
