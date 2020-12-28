@@ -18,5 +18,5 @@ class Obstacle(Representable):
     @staticmethod
     def lower_wall(gap: Rect):
         origin = Point(gap.origin.x, 1.0 - gap.origin.y + gap.size.height)
-        size = Size(gap.size.width, 10)
+        size = Size(gap.size.width, gap.origin.y - gap.size.height)
         return Rect(origin, size)

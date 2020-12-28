@@ -34,7 +34,7 @@ class Game:
 
     @staticmethod
     def default_board(bird_animation) -> Board:
-        walls = [Obstacle(Rect(Point(0.6, 0.6), Size(0.1, 0.3)))]
+        walls = [Obstacle(Rect(Point(0.6, 0.6), Size(0.18, 0.3)))]
         bird = Bird(Rect(Point(0.2, 0.5), Size(0.068, 0.05)),
                     flap_velocity=0.6,
                     horizontal_velocity=0.3,
