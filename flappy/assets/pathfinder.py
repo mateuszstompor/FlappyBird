@@ -1,11 +1,10 @@
-import os
+from os import path
 
 
 class PathFinder:
     @staticmethod
     def assets():
-        dir_path = os.path.dirname(os.path.realpath(__file__))
-        return dir_path + "/../../assets"
+        return path.dirname(path.realpath(__file__)) + "/../../assets"
 
     @staticmethod
     def audio(name):
