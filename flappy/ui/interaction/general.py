@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class View(ABC):
+class InteractionProcessor(ABC):
     @abstractmethod
-    def show(self):
+    def process(self, events):
         pass

@@ -20,7 +20,9 @@ class Game:
         self.board = Game.default_board(bird_animation)
 
     def reset(self):
+        flaps_subject = self.board.bird.flaps
         self.board = Game.default_board(self.board.bird.animation)
+        self.board.bird.flaps = flaps_subject
         self.score_counter.reset()
         self.__motion_engine.reset()
 
