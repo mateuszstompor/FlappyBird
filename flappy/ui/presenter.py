@@ -23,7 +23,7 @@ class Presenter:
             controller = self.__controllers[-1]
             controller.view().draw(self.__surface)
             controller.received_focus()
-            while controller == self.__controllers[-1]:
+            while self.__controllers and controller == self.__controllers[-1]:
                 events = pygame.event.get()
                 for processor in controller.interaction_processors():
                     processor.process(events)
