@@ -10,8 +10,8 @@ class CollisionDetector:
 
     def check_collisions(self, board: Board):
         colliding_objects = [o for o in board.obstacles if self.is_colliding(board.bird, o)]
-        for o in colliding_objects:
-            self.collision_notifier.notify([o, board.bird])
+        for obstacle in colliding_objects:
+            self.collision_notifier.notify([obstacle, board.bird])
 
     @staticmethod
     def is_colliding(bird: Bird, obstacle: Obstacle):

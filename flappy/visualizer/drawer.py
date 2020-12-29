@@ -12,54 +12,53 @@ from flappy.visualizer.conversion.rect import RectConverter
 
 
 class Drawer:
-    def __init__(self, screen: Surface):
-        self.screen = screen
+    def __init__(self):
         self.textures = TextureLibrary.with_images(['pipe-green.png',
                                                     'redbird-downflap.png',
                                                     'background-day.png',
                                                     'background-night.png',
                                                     'base.png'])
 
-    def draw(self, board: Board, background):
-        self.present_background(background)
-        self.present_bird(board.bird)
+    def draw(self, surface: Surface, board: Board, background):
+        self.present_background(surface, background)
+        self.present_bird(surface, board.bird)
         for o in board.obstacles:
             if Drawer.is_in_sight(o, Rect(Point(-1, 0), Size(3, 1))):
-                self.present_wall(o)
-        self.present_base()
+                self.present_wall(surface, o)
+        self.present_base(surface)
 
-    def present_bird(self, bird: Bird):
-        rect = RectConverter.as_pygame(bird.frame, self.screen)
+    def present_bird(self, surface: Surface, bird: Bird):
+        rect = RectConverter.as_pygame(bird.frame, surface)
         image = pygame.transform.rotate(bird.animation.data(), bird.current_angle)
-        self.screen.blit(image, rect)
+        surface.blit(image, rect)
 
-    def present_base(self):
+    def present_base(self, surface: Surface):
         image = self.textures['base.png']
         x = image.get_rect()[2] / 2
-        self.screen.blit(image, pygame.rect.Rect(self.screen.get_rect()[2] / 2 - x,
-                                                 self.screen.get_rect()[2] / 2 + 320,
-                                                 15, 15))
+        surface.blit(image, pygame.rect.Rect(surface.get_rect()[2] / 2 - x,
+                                             surface.get_rect()[2] / 2 + 320,
+                                             15, 15))
 
-    def present_background(self, name='background-day.png'):
+    def present_background(self, surface: Surface, name='background-day.png'):
         image = self.textures.image(name)
-        self.screen.blit(image, self.screen.get_rect())
+        surface.blit(image, surface.get_rect())
 
-    def present_wall(self, obstacle: Obstacle):
+    def present_wall(self, surface: Surface, obstacle: Obstacle):
         upper, lower = obstacle.wall
-        rect = RectConverter.as_pygame(lower, self.screen)
+        rect = RectConverter.as_pygame(lower, surface)
         image = self.textures.image('pipe-green.png')
         scale = (rect[2], image.get_rect()[3])
         scaled = pygame.transform.scale(image, scale)
-        self.screen.blit(scaled, (rect[0], rect[1], scale[0], image.get_rect()[3]))
+        surface.blit(scaled, (rect[0], rect[1], scale[0], image.get_rect()[3]))
 
         image_rect = image.get_rect()
-        rect = RectConverter.as_pygame(upper, self.screen)
+        rect = RectConverter.as_pygame(upper, surface)
         cropped = pygame.Surface((image_rect[2], rect.height))
         cropped.blit(image, (0, 0), (0, 0, image_rect[2], rect[3]))
         rotated_image = pygame.transform.rotate(cropped, 180)
         scale = (rect[2], rotated_image.get_rect()[3])
         scaled = pygame.transform.scale(rotated_image, scale)
-        self.screen.blit(scaled, rect)
+        surface.blit(scaled, rect)
 
     @staticmethod
     def is_in_sight(obstacle: Obstacle, sight: Rect):

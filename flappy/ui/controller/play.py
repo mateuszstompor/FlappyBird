@@ -3,6 +3,7 @@ import pygame
 from typing import Any
 from flappy.ui.presenter import Presenter
 from flappy.ui.view.play import PlayView
+from flappy.sfx.scene.game import GameAudio
 from flappy.core.observer.general import Observer
 from flappy.ui.controller.general import ViewController
 from flappy.ui.controller.lost import LostViewController
@@ -13,6 +14,9 @@ from flappy.ui.interaction.keyboard import KeyboardProcessor, KeyboardActionDele
 class PlayViewController(ViewController, KeyboardActionDelegate, Observer):
     def __init__(self, presenter: Presenter, bird_animation, background):
         self.__view = PlayView(bird_animation, background)
+        self.__audio = GameAudio(flap_subject=self.__view.game.board.bird.flaps,
+                                 collision_subject=self.__view.game.collision_detector.collision_notifier,
+                                 score_subject=self.__view.game.score_counter.point_gained)
         self.__view.game.collision_detector.collision_notifier.attach(self)
         self.__keyboard = KeyboardProcessor(self)
         self.__presenter = presenter

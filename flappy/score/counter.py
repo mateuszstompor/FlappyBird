@@ -8,17 +8,21 @@ from flappy.core.observer.passthrough import PassthroughSubject
 class ScoreCounter:
     def __init__(self):
         self.point_gained = PassthroughSubject()  # type: Subject
-        self.score = 0
+        self.__score = 0
 
     def update_score(self, obstacles: List[Obstacle], bird: Bird):
         new_score = self.count_passed(obstacles, bird)
-        if new_score > self.score:
+        if new_score > self.__score:
             self.point_gained.notify(new_score)
-            self.score = new_score
+            self.__score = new_score
+
+    def score(self):
+        return self.__score
 
     def reset(self):
-        self.score = 0
+        self.__score = 0
 
     @staticmethod
     def count_passed(obstacles: List[Obstacle], bird: Bird) -> int:
-        return sum([1 for o in obstacles if o.wall.upper.origin.x + o.wall.upper.size.width / 2 < bird.frame.origin.x])
+        return sum([1 for obstacle in obstacles
+                    if obstacle.wall.upper.origin.x + obstacle.wall.upper.size.width / 2 < bird.frame.origin.x])

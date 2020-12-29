@@ -12,21 +12,12 @@ from flappy.textures.library import TextureLibrary
 
 
 class LandingView(View):
-    def draw(self, surface: Surface):
-        self.board_drawer = Drawer(surface)
-        self.board_drawer.present_background(self.backgrounds[self.chosen_background])
-        self.render_logo(surface)
-        self.render_sidewalk(surface)
-        self.render_button(surface)
-        self.board_drawer.present_bird(self.bird)
-        pygame.display.flip()
-
     def __init__(self):
         self.textures = TextureLibrary.with_images(['flappy-bird.png', 'play.png', 'base.png'])
         self.backgrounds = ['background-day.png', 'background-night.png']
         self.chosen_background = 0
         bird_size = Size(0.068, 0.05)
-
+        self.board_drawer = Drawer()
         self.animation_store = AnimationStore()
         self.available_animations = [self.animation_store.blue_bird(),
                                      self.animation_store.red_bird(),
@@ -39,6 +30,14 @@ class LandingView(View):
                          animation=self.available_animations[0])
         self.bird.animation.repeat = True
         self.bird.animation.play()
+
+    def draw(self, surface: Surface):
+        self.board_drawer.present_background(surface, self.backgrounds[self.chosen_background])
+        self.render_logo(surface)
+        self.render_sidewalk(surface)
+        self.render_button(surface)
+        self.board_drawer.present_bird(surface, self.bird)
+        pygame.display.flip()
 
     def render_logo(self, screen):
         image = self.textures['flappy-bird.png']
