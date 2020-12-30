@@ -5,14 +5,14 @@ from flappy.animation.sequence import SequenceAnimation
 from flappy.core.observer.passthrough import PassthroughSubject
 
 
-class State:
+class State:  # pylint: disable=R0903
     def __init__(self, velocity: float = 0, angle: float = 0, distance: float = 0):
         self.velocity = velocity
         self.angle = angle
         self.distance = distance
 
 
-class Bird(Representable):
+class Bird(Representable):  # pylint: disable=R0903
     def __init__(self, frame: Rect,
                  flight_velocity: FlightVelocity,
                  animation: SequenceAnimation):

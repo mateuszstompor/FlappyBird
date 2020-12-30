@@ -8,8 +8,7 @@ from flappy.ui.view.play import PlayView
 from flappy.sfx.scene.game import GameAudio
 from flappy.core.observer.general import Observer
 from flappy.ui.controller.general import ViewController
-from flappy.ui.controller.lost import LostViewController
-from flappy.ui.controller.tutorial import TutorialViewController
+from flappy.ui.controller.toast import ToastViewController
 from flappy.ui.interaction.keyboard import KeyboardProcessor, KeyboardActionDelegate
 
 
@@ -40,12 +39,12 @@ class PlayViewController(ViewController, KeyboardActionDelegate, Observer):
 
     def received_focus(self):
         if self.__first_time:
-            self.__presenter.push(TutorialViewController(self.__presenter))
+            self.__presenter.push(ToastViewController(self.__presenter, 'message.png'))
             self.__first_time = False
         self.__view.game.reset()
 
     def update(self, subject, event: Any):
-        self.__presenter.push(LostViewController(self.__presenter))
+        self.__presenter.push(ToastViewController(self.__presenter, 'gameover.png'))
 
     def view_redrawn(self):
         self.__game.update()

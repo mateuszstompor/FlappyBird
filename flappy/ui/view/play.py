@@ -6,7 +6,7 @@ from flappy.visualizer.drawer import Drawer
 from flappy.visualizer.score import ScoreDrawer
 
 
-class PlayView(View):
+class PlayView(View):  # pylint: disable=R0903
     def __init__(self, background, game):
         self.game = game
         self.background = background

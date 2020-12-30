@@ -31,7 +31,7 @@ class Game:
         self.score_counter.update_score(self.board.obstacles, self.board.bird)
         self.__motion_engine.update(self.board)
         if 100 > len(self.board.obstacles) > 0:
-            obstacle = self.__terrain_generator.next_obstacle(self.board.obstacles[-1])
+            obstacle = self.__terrain_generator.next(self.board.obstacles[-1])
             self.board.obstacles.append(obstacle)
         self.collision_detector.check_collisions(self.board)
 

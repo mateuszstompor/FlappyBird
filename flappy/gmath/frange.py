@@ -1,4 +1,3 @@
-class Frange:
-    def __init__(self, low, high):
-        self.low = low
-        self.high = high
+from typing import NamedTuple
+
+Frange = NamedTuple('Frange', [('low', float), ('high', float)])

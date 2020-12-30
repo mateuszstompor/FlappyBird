@@ -1,7 +1,4 @@
-from flappy.misc.representable import Representable
+from typing import NamedTuple
 
 
-class Size(Representable):
-    def __init__(self, width: float, height: float):
-        self.width = width
-        self.height = height
+Size = NamedTuple('Size', [('width', float), ('height', float)])

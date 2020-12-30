@@ -35,8 +35,8 @@ class LandingViewController(ViewController, KeyboardActionDelegate):
             background = self.__backgrounds.item()
             self.__presenter.push(PlayViewController(self.__presenter, animation, background))
         elif key == pygame.K_1:
-            self.__view.change_bird_animation(self.__bird_animations.next())
+            self.__view.change_bird_animation(self.__bird_animations.next())  # pylint: disable=E1102
         elif key == pygame.K_2:
-            self.__view.background = self.__backgrounds.next()
+            self.__view.background = self.__backgrounds.next()  # pylint: disable=E1102
         elif key == pygame.K_q:
             self.__presenter.pop_all()

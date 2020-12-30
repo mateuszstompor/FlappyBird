@@ -7,6 +7,9 @@ class Observer(ABC):
     def update(self, subject, event: Any):
         pass
 
+    def terminate(self):
+        pass
+
 
 class Subject(ABC):
     @abstractmethod

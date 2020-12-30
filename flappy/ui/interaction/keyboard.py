@@ -1,4 +1,4 @@
-from abc import ABC, abstractmethod
+from abc import ABC
 from typing import Optional, List, Any
 
 import pygame
@@ -7,12 +7,14 @@ from flappy.ui.interaction.general import InteractionProcessor
 
 
 class KeyboardActionDelegate(ABC):
-    @abstractmethod
     def key_pressed(self, key):
         pass
 
+    def key_released(self, key):
+        pass
 
-class KeyboardProcessor(InteractionProcessor):
+
+class KeyboardProcessor(InteractionProcessor):  # pylint: disable=R0903
     def __init__(self, delegate: Optional[KeyboardActionDelegate]):
         self.delegate = delegate
 
