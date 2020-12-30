@@ -147,8 +147,6 @@ disable=print-statement,
         R0902,
         W0108,
         C0411,
-        R0201,
-        R1705,
         R0801,
         R0913,
         E1102

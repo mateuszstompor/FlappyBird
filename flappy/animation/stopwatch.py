@@ -14,7 +14,7 @@ class StopWatch:
     def elapsed_time(self) -> float:
         if self.__paused:
             return self.__elapsed
-        elif self.__last_start is None:
+        if self.__last_start is None:
             return self.__elapsed
         return time() - self.__last_start + self.__elapsed
 
