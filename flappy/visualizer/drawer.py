@@ -19,15 +19,15 @@ class Drawer:
                                                     'background-night.png',
                                                     'base.png'])
 
-    def draw(self, surface: Surface, board: Board, background):
-        self.present_background(surface, background)
+    def draw(self, surface: Surface, board: Board):
         self.present_bird(surface, board.bird)
         for o in board.obstacles:
             if Drawer.is_in_sight(o, Rect(Point(-1, 0), Size(3, 1))):
                 self.present_wall(surface, o)
         self.present_base(surface)
 
-    def present_bird(self, surface: Surface, bird: Bird):
+    @staticmethod
+    def present_bird(surface: Surface, bird: Bird):
         rect = RectConverter.as_pygame(bird.frame, surface)
         image = pygame.transform.rotate(bird.animation.data(), bird.current_angle)
         surface.blit(image, rect)
@@ -38,10 +38,6 @@ class Drawer:
         surface.blit(image, pygame.rect.Rect(surface.get_rect()[2] / 2 - x,
                                              surface.get_rect()[2] / 2 + 320,
                                              15, 15))
-
-    def present_background(self, surface: Surface, name='background-day.png'):
-        image = self.textures.image(name)
-        surface.blit(image, surface.get_rect())
 
     def present_wall(self, surface: Surface, obstacle: Obstacle):
         upper, lower = obstacle.wall
@@ -62,5 +58,7 @@ class Drawer:
 
     @staticmethod
     def is_in_sight(obstacle: Obstacle, sight: Rect):
-        return sight.is_overlapping(obstacle.wall.upper) or sight.is_overlapping(obstacle.wall.lower) or \
-               obstacle.wall.upper.is_overlapping(sight) or obstacle.wall.lower.is_overlapping(sight)
+        return sight.is_overlapping(obstacle.wall.upper) or \
+               sight.is_overlapping(obstacle.wall.lower) or \
+               obstacle.wall.upper.is_overlapping(sight) or \
+               obstacle.wall.lower.is_overlapping(sight)

@@ -14,6 +14,7 @@ class PlayView(View):
         self.board_drawer = Drawer()
 
     def draw(self, surface: Surface):
-        self.board_drawer.draw(surface, self.game.board, self.background)
+        surface.blit(self.background, surface.get_rect())
+        self.board_drawer.draw(surface, self.game.board)
         self.score_drawer.draw(surface, self.game.score_counter.score())
         pygame.display.flip()

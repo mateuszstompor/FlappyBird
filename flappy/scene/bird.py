@@ -1,6 +1,6 @@
 from flappy.gmath.rect import Rect
-from flappy.animation.sequence import SequenceAnimation
 from flappy.misc.representable import Representable
+from flappy.animation.sequence import SequenceAnimation
 from flappy.core.observer.passthrough import PassthroughSubject
 
 
