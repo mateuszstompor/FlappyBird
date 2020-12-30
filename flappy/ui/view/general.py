@@ -1,5 +1,6 @@
-from pygame.surface import Surface
 from abc import ABC, abstractmethod
+
+from pygame.surface import Surface
 
 
 class View(ABC):

@@ -1,6 +1,6 @@
-import pygame
-
 from typing import Any
+
+import pygame
 
 from flappy.game import Game
 from flappy.ui.presenter import Presenter

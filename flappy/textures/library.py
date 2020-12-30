@@ -1,6 +1,7 @@
+from typing import Dict
+
 import pygame
 
-from typing import Dict
 from flappy.assets.pathfinder import PathFinder
 
 

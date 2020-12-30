@@ -1,6 +1,7 @@
+from math import floor
+
 import pygame
 
-from math import floor
 from pygame.surface import Surface
 from flappy.textures.library import TextureLibrary
 

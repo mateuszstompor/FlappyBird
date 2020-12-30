@@ -19,5 +19,5 @@ class Rect(Representable):
                self.origin.y + self.size.height >= point.y >= self.origin.y
 
     def is_overlapping(self, rect):
-        return any(map(lambda p: self.is_in(p), rect.edge_points())) or \
-               any(map(lambda p: rect.is_in(p), self.edge_points()))
+        return any(map(self.is_in, rect.edge_points())) or \
+               any(map(rect.is_in, self.edge_points()))

@@ -1,7 +1,8 @@
-import pygame
-
 from abc import ABC, abstractmethod
 from typing import Optional, List, Any
+
+import pygame
+
 from flappy.ui.interaction.general import InteractionProcessor
 
 
