@@ -10,7 +10,7 @@ class TerrainGenerator:  # pylint: disable=R0903
         self.x_delta = x_delta
         self.bound = bound
 
-    def next(self, previous: Obstacle) -> Obstacle:
+    def new(self, previous: Obstacle) -> Obstacle:
         new = previous.gap
         new.origin.x = max(new.origin.x + self.x_delta, 1.1)
         y_displacement = uniform(self.y_delta.low, self.y_delta.high)

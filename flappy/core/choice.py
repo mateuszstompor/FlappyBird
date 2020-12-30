@@ -10,7 +10,7 @@ class WheelChoice:
     def step(self):
         self.__current = (self.__current + 1) % len(self.__collection)
 
-    def next(self) -> Any:
+    def next_item(self) -> Any:
         self.step()
         return self.item()
 
