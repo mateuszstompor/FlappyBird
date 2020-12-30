@@ -1,16 +1,17 @@
 import pygame
 
+from typing import Dict
 from flappy.assets.pathfinder import PathFinder
 
 
 class TextureLibrary:
-    def __init__(self, data):
+    def __init__(self, data: Dict[str, pygame.Surface]):
         self.__data = data
 
     def __getitem__(self, item):
         return self.image(item)
 
-    def image(self, name):
+    def image(self, name) -> pygame.Surface:
         return self.__data[name]
 
     @staticmethod

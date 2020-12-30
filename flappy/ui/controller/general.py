@@ -15,3 +15,6 @@ class ViewController(ABC):
 
     def received_focus(self):
         pass
+
+    def view_redrawn(self):
+        pass
