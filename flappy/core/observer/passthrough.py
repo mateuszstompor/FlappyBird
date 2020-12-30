@@ -11,8 +11,8 @@ class PassthroughSubject(Subject):
         self.observers.remove(observer)
 
     def notify(self, event: Any):
-        for o in self.observers:
-            o.update(self, event)
+        for observer in self.observers:
+            observer.update(self, event)
 
     def attach(self, observer: Observer):
         self.observers.append(observer)

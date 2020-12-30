@@ -8,6 +8,7 @@ from flappy.gmath.point import Point
 from flappy.scene.board import Board
 from flappy.scene.obstacle import Obstacle
 from flappy.textures.library import TextureLibrary
+from flappy.visualizer.common import render_centered
 from flappy.visualizer.conversion.rect import RectConverter
 
 
@@ -21,23 +22,16 @@ class Drawer:
 
     def draw(self, surface: Surface, board: Board):
         self.present_bird(surface, board.bird)
-        for o in board.obstacles:
-            if Drawer.is_in_sight(o, Rect(Point(-1, 0), Size(3, 1))):
-                self.present_wall(surface, o)
-        self.present_base(surface)
+        for obstacle in board.obstacles:
+            if Drawer.is_in_sight(obstacle, Rect(Point(-1, 0), Size(3, 1))):
+                self.present_wall(surface, obstacle)
+        render_centered(self.textures['base.png'], surface, Point(0, 250))
 
     @staticmethod
     def present_bird(surface: Surface, bird: Bird):
         rect = RectConverter.as_pygame(bird.frame, surface)
         image = pygame.transform.rotate(bird.animation.data(), bird.current_angle)
         surface.blit(image, rect)
-
-    def present_base(self, surface: Surface):
-        image = self.textures['base.png']
-        x = image.get_rect()[2] / 2
-        surface.blit(image, pygame.rect.Rect(surface.get_rect()[2] / 2 - x,
-                                             surface.get_rect()[2] / 2 + 320,
-                                             15, 15))
 
     def present_wall(self, surface: Surface, obstacle: Obstacle):
         upper, lower = obstacle.wall

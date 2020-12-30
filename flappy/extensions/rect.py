@@ -1,4 +1,5 @@
 from pygame.rect import Rect
+from flappy.gmath.point import Point
 
 
 def x_centered(rect: Rect, inside: Rect) -> Rect:
@@ -17,10 +18,10 @@ def y_adding(rect: Rect, delta: float) -> Rect:
     return Rect(rect[0], rect[1] + delta, *rect[2:])
 
 
-def adding(rect: Rect, x_delta: float = 0, y_delta: float = 0):
-    return x_adding(y_adding(rect, y_delta), x_delta)
+def adding(rect: Rect, point: Point):
+    return x_adding(y_adding(rect, point.y), point.x)
 
 
-def center(rect: Rect, inside: Rect, x: bool = False, y: bool = False):
-    rect = x_centered(rect, inside) if x else rect
-    return y_centered(rect, inside) if y else rect
+def center(rect: Rect, inside: Rect, x_axis: bool = False, y_axis: bool = False):
+    rect = x_centered(rect, inside) if x_axis else rect
+    return y_centered(rect, inside) if y_axis else rect

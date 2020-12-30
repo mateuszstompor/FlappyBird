@@ -31,6 +31,6 @@ class MotionEngine:
     @staticmethod
     def move_terrain(board: Board, delta: float):
         distance = board.bird.horizontal_velocity * delta
-        for o in board.obstacles:
-            o.wall.lower.origin.x -= distance
-            o.wall.upper.origin.x -= distance
+        for obstacle in board.obstacles:
+            obstacle.wall.lower.origin.x -= distance
+            obstacle.wall.upper.origin.x -= distance

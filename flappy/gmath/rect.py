@@ -10,9 +10,9 @@ class Rect(Representable):
 
     def edge_points(self):
         return [self.origin,
-                Point(self.origin.x + self.size.width, self.origin.y),
-                Point(self.origin.x + self.size.width, self.origin.y + self.size.height),
-                Point(self.origin.x, self.origin.y + self.size.height)]
+                self.origin + Point(self.size.width, 0),
+                self.origin + Point(self.size.width, self.size.height),
+                self.origin + Point(0, self.size.height)]
 
     def is_in(self, point: Point):
         return self.origin.x + self.size.width >= point.x >= self.origin.x and \

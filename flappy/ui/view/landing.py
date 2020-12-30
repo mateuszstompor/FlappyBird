@@ -24,7 +24,8 @@ class LandingView(View):
         render_centered(self.__textures['flappy-bird.png'], surface, Point(0, -110))
         render_centered(self.__textures['base.png'], surface, Point(0, 250))
         render_centered(self.__textures['play.png'], surface, Point(0, 130))
-        rect = center(self.bird_animation.data().get_rect(), surface.get_rect(), y=True, x=True)
+        rect = center(self.bird_animation.data().get_rect(), surface.get_rect(),
+                      y_axis=True, x_axis=True)
         surface.blit(self.bird_animation.data(), rect)
         pygame.display.flip()
 
