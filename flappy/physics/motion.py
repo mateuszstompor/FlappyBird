@@ -20,17 +20,17 @@ class MotionEngine:
         self.__last_update = time()
 
     def move_bird(self, bird: Bird, delta: float):
-        distance = bird.vertical_velocity * delta - (self.__gravity * delta ** 2)/2
+        distance = bird.state.velocity * delta - (self.__gravity * delta ** 2)/2
         bird.frame.origin.y -= distance
-        bird.vertical_velocity = bird.vertical_velocity - self.__gravity * delta
-        bird.distance_travelled += bird.horizontal_velocity * delta
-        counted_angle = (bird.vertical_velocity / bird.flap_velocity) * bird.maximal_angle
-        biased = counted_angle + self.__angle_bias
-        bird.current_angle = min(biased, bird.maximal_angle)
+        bird.state.velocity = bird.state.velocity - self.__gravity * delta
+        bird.state.distance += bird.flight_velocity.horizonatal * delta
+        angle = (bird.state.velocity / bird.flight_velocity.vertical) * bird.maximal_angle
+        biased_angle = angle + self.__angle_bias
+        bird.state.angle = min(biased_angle, bird.maximal_angle)
 
     @staticmethod
     def move_terrain(board: Board, delta: float):
-        distance = board.bird.horizontal_velocity * delta
+        distance = board.bird.flight_velocity.horizonatal * delta
         for obstacle in board.obstacles:
             obstacle.wall.lower.origin.x -= distance
             obstacle.wall.upper.origin.x -= distance

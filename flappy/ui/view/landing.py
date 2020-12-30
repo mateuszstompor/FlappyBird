@@ -22,7 +22,7 @@ class LandingView(View):
     def draw(self, surface: Surface):
         surface.blit(self.background, surface.get_rect())
         render_centered(self.__textures['flappy-bird.png'], surface, Point(0, -110))
-        render_centered(self.__textures['base.png'], surface, Point(0, 250))
+        render_centered(self.__textures['base.png'], surface, Point(0, 260))
         render_centered(self.__textures['play.png'], surface, Point(0, 130))
         rect = center(self.bird_animation.data().get_rect(), surface.get_rect(),
                       y_axis=True, x_axis=True)

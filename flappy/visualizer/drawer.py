@@ -25,12 +25,12 @@ class Drawer:
         for obstacle in board.obstacles:
             if Drawer.is_in_sight(obstacle, Rect(Point(-1, 0), Size(3, 1))):
                 self.present_wall(surface, obstacle)
-        render_centered(self.textures['base.png'], surface, Point(0, 250))
+        render_centered(self.textures['base.png'], surface, Point(0, 260))
 
     @staticmethod
     def present_bird(surface: Surface, bird: Bird):
         rect = RectConverter.as_pygame(bird.frame, surface)
-        image = pygame.transform.rotate(bird.animation.data(), bird.current_angle)
+        image = pygame.transform.rotate(bird.animation.data(), bird.state.angle)
         surface.blit(image, rect)
 
     def present_wall(self, surface: Surface, obstacle: Obstacle):
