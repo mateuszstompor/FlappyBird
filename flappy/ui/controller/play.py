@@ -17,8 +17,9 @@ class PlayViewController(ViewController, KeyboardActionDelegate, Observer):
     def __init__(self, presenter: Presenter, bird_animation, background):
         self.__game = Game(bird_animation)
         self.__view = PlayView(background, self.__game)
+        collision_subject = self.__game.collision_detector.collision_notifier
         self.__audio = GameAudio(flap_subject=self.__game.board.bird.flaps,
-                                 collision_subject=self.__game.collision_detector.collision_notifier,
+                                 collision_subject=collision_subject,
                                  score_subject=self.__game.score_counter.point_gained)
         self.__game.collision_detector.collision_notifier.attach(self)
         self.__keyboard = KeyboardProcessor(self)

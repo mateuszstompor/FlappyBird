@@ -25,4 +25,4 @@ class ScoreCounter:
     @staticmethod
     def count_passed(obstacles: List[Obstacle], bird: Bird) -> int:
         return sum([1 for obstacle in obstacles
-                    if obstacle.wall.upper.origin.x + obstacle.wall.upper.size.width / 2 < bird.frame.origin.x])
+                    if obstacle.wall.upper.origin.x < bird.frame.origin.x])
