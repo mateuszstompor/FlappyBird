@@ -21,3 +21,9 @@ class TextureLibrary:
             path = PathFinder.sprite(name)
             data[name] = pygame.image.load(path)
         return TextureLibrary(data)
+
+    @staticmethod
+    def load_images(names):
+        loader = TextureLibrary.with_images(names)
+        return [loader[name] for name in names]
+
