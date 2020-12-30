@@ -9,6 +9,7 @@ from flappy.ui.view.general import View
 from flappy.visualizer.drawer import Drawer
 from flappy.animation.store import AnimationStore
 from flappy.textures.library import TextureLibrary
+from flappy.visualizer.common import render_centered
 
 
 class LandingView(View):
@@ -33,33 +34,11 @@ class LandingView(View):
 
     def draw(self, surface: Surface):
         self.board_drawer.present_background(surface, self.backgrounds[self.chosen_background])
-        self.render_logo(surface)
-        self.render_sidewalk(surface)
-        self.render_button(surface)
+        render_centered(self.textures['flappy-bird.png'], surface, Point(0, -110))
+        render_centered(self.textures['base.png'], surface, Point(0, 250))
+        render_centered(self.textures['play.png'], surface, Point(0, 130))
         self.board_drawer.present_bird(surface, self.bird)
         pygame.display.flip()
-
-    def render_logo(self, screen):
-        image = self.textures['flappy-bird.png']
-        x = image.get_rect()[2] / 2
-        y = image.get_rect()[3] / 2
-        screen.blit(image, pygame.rect.Rect(screen.get_rect()[2] / 2 - x,
-                                            screen.get_rect()[2] / 2 - y,
-                                            30, 30))
-
-    def render_button(self, screen):
-        image = self.textures['play.png']
-        x = image.get_rect()[2] / 2
-        screen.blit(image, pygame.rect.Rect(screen.get_rect()[2] / 2 - x,
-                                            screen.get_rect()[2] / 2 + 210,
-                                            15, 15))
-
-    def render_sidewalk(self, screen):
-        image = self.textures['base.png']
-        x = image.get_rect()[2] / 2
-        screen.blit(image, pygame.rect.Rect(screen.get_rect()[2] / 2 - x,
-                                            screen.get_rect()[2] / 2 + 300,
-                                            15, 15))
 
     def change_bird_animation(self, animation):
         self.bird.animation = animation
