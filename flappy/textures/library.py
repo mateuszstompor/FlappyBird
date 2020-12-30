@@ -26,4 +26,3 @@ class TextureLibrary:
     def load_images(names):
         loader = TextureLibrary.with_images(names)
         return [loader[name] for name in names]
-
