@@ -17,6 +17,12 @@ class Stack:
     def top(self):
         return self.__items[len(self.__items) - 1]
 
+    def from_top(self):
+        return iter(self.__items[::-1])
+
+    def from_bottom(self):
+        return iter(self.__items)
+
     def __bool__(self):
         return bool(self.__items)
 
