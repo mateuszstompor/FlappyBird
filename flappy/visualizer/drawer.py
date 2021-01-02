@@ -24,7 +24,7 @@ class Drawer:
         self.present_bird(surface, board.bird)
         for index, obstacle in enumerate(board.obstacles):
             if Drawer.is_in_sight(obstacle, Rect(Point(-1, 0), Size(3, 1))):
-                image_name = 'pipe-red.png' if index % 5 == 0 and index > 0 else 'pipe-green.png'
+                image_name = 'pipe-red.png' if (index + 1) % 5 == 0 and index > 0 else 'pipe-green.png'
                 self.present_wall(surface, obstacle, image_name)
 
     @staticmethod
