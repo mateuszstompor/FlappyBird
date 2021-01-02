@@ -11,3 +11,6 @@ class Point(Representable):
 
     def offset(self, x_offset: float = 0, y_offset: float = 0):
         return Point(self.x + x_offset, self.y + y_offset)
+
+    def __sub__(self, other):
+        return Point(self.x - other.x, self.y - other.y)
