@@ -24,8 +24,13 @@ class Drawer:
         self.present_bird(surface, board.bird)
         for index, obstacle in enumerate(board.obstacles):
             if Drawer.is_in_sight(obstacle, Rect(Point(-1, 0), Size(3, 1))):
-                image_name = 'pipe-red.png' if (index + 1) % 5 == 0 and index > 0 else 'pipe-green.png'
-                self.present_wall(surface, obstacle, image_name)
+                self.present_wall(surface, obstacle, self.obstacle_image(index))
+
+    def obstacle_image(self, obstacle_number: int):
+        image_name = 'pipe-green.png'
+        if (obstacle_number + 1) % 5 == 0 and obstacle_number > 0:
+            image_name = 'pipe-red.png'
+        return self.textures[image_name]
 
     @staticmethod
     def present_bird(surface: Surface, bird: Bird):
@@ -33,10 +38,10 @@ class Drawer:
         image = pygame.transform.rotate(bird.animation.data(), bird.state.angle)
         surface.blit(image, rect)
 
-    def present_wall(self, surface: Surface, obstacle: Obstacle, image_name: str):
+    @staticmethod
+    def present_wall(surface: Surface, obstacle: Obstacle, image: Surface):
         upper, lower = obstacle.wall
         rect = RectConverter.as_pygame(lower, surface)
-        image = self.textures[image_name]
         scale = (rect[2], image.get_rect()[3])
         scaled = pygame.transform.scale(image, scale)
         surface.blit(scaled, (rect[0], rect[1], scale[0], image.get_rect()[3]))
