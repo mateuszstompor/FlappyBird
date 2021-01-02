@@ -1,36 +1,45 @@
-import pygame
-
 from pygame.surface import Surface
 from flappy.gmath.point import Point
-from flappy.ui.view.general import View
-from flappy.extensions.rect import center
-from flappy.visualizer.drawer import Drawer
+from flappy.ui.view.sprite import SpriteView
+from flappy.ui.view.animated import AnimatedView
 from flappy.textures.library import TextureLibrary
-from flappy.visualizer.common import render_centered
+from flappy.ui.view.blueprint import BlueprintView
 from flappy.animation.sequence import SequenceAnimation
 
 
-class LandingView(View):
+class LandingView(BlueprintView):
     def __init__(self, bird_animation: SequenceAnimation, background: Surface):
+        super().__init__(None, Point(0, 0))
         self.background = background
         self.bird_animation = bird_animation
         self.bird_animation.repeat = True
         self.bird_animation.play()
-        self.__board_drawer = Drawer()
-        self.__textures = TextureLibrary.with_images(['flappy-bird.png', 'play.png', 'base.png'])
+        textures = TextureLibrary.with_images(['flappy-bird.png', 'play.png', 'base.png'])
+        self.play_view = None
+        self.bird_view = None
+        self.background_view = None
+        self.build_subviews(background, self.bird_animation, textures)
 
-    def draw(self, surface: Surface):
-        surface.blit(self.background, surface.get_rect())
-        render_centered(self.__textures['flappy-bird.png'], surface, Point(0, -110))
-        render_centered(self.__textures['base.png'], surface, Point(0, 260))
-        render_centered(self.__textures['play.png'], surface, Point(0, 130))
-        rect = center(self.bird_animation.data().get_rect(), surface.get_rect(),
-                      y_axis=True, x_axis=True)
-        surface.blit(self.bird_animation.data(), rect)
-        pygame.display.flip()
+    def compose(self) -> Surface:
+        return self.background
 
-    def change_bird_animation(self, animation: SequenceAnimation):
+    def set_bird_animation(self, animation: SequenceAnimation):
         self.bird_animation = animation
         self.bird_animation.repeat = True
         if not self.bird_animation.is_playing():
             self.bird_animation.play()
+        self.bird_view.animation = self.bird_animation
+
+    def set_background(self, image: Surface):
+        self.background_view.image = image
+
+    def build_subviews(self, background, bird_animation, textures):
+        view = SpriteView(self, Point(0, 0), background)
+        self.play_view = SpriteView.centered_in(view, textures['play.png'], Point(0, 130))
+        view.add_subview(self.play_view)
+        view.add_subview(SpriteView.centered_in(view, textures['flappy-bird.png'], Point(0, -110)))
+        view.add_subview(SpriteView.centered_in(view, textures['base.png'], Point(0, 260)))
+        self.bird_view = AnimatedView.centered_in(view, bird_animation, Point(0, 0))
+        view.add_subview(self.bird_view)
+        self.background_view = view
+        self._subviews = [self.background_view]
