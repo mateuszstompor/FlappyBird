@@ -30,5 +30,5 @@ class ToastViewController(ViewController, KeyboardActionDelegate, MouseActionDel
         elif key == pygame.K_q:
             self.__presenter.pop_all()
 
-    def tapped(self):
+    def tapped(self, sender: TapHandler):
         self.__presenter.pop()

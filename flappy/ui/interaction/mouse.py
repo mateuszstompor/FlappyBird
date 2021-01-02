@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from abc import ABC
 from typing import Optional
 
@@ -10,10 +12,10 @@ from flappy.ui.interaction.general import InteractionProcessor
 
 
 class MouseActionDelegate(ABC):
-    def tapped(self):
+    def tapped(self, sender: TapHandler):
         pass
 
-    def released(self):
+    def released(self, sender: TapHandler):
         pass
 
 
@@ -22,15 +24,20 @@ class TapHandler(InteractionProcessor):
         self.__view = view
         self.delegate = delegate
 
-    def process(self, events):
+    def responds(self, events) -> bool:
         for event in events:
             if event.type in [pygame.MOUSEBUTTONUP, pygame.MOUSEBUTTONDOWN]:
                 position = pygame.mouse.get_pos()
                 if self.interacts(Point(*position)):
                     if event.type == pygame.MOUSEBUTTONUP:
-                        self.delegate.released()
+                        self.delegate.released(self)
                     else:
-                        self.delegate.tapped()
+                        self.delegate.tapped(self)
+                    return True
+        return False
+
+    def allows_other(self) -> bool:
+        return False
 
     def interacts(self, point: Point):
         tap_position = point - self.absolute_position(self.__view)

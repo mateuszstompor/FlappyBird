@@ -1,7 +1,11 @@
 from abc import ABC, abstractmethod
 
 
-class InteractionProcessor(ABC):  # pylint: disable=R0903
+class InteractionProcessor(ABC):
     @abstractmethod
-    def process(self, events):
+    def responds(self, events) -> bool:
+        pass
+
+    @abstractmethod
+    def allows_other(self) -> bool:
         pass

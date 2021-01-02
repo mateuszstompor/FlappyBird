@@ -32,7 +32,8 @@ class Presenter:
                 last_controller = controller
             events = pygame.event.get()
             for processor in controller.interaction_processors():
-                processor.process(events)
+                if processor.responds(events) and not processor.allows_other():
+                    break
             self.__redraw_hierarchy()
 
     def __redraw_hierarchy(self):

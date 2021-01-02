@@ -56,5 +56,5 @@ class PlayViewController(ViewController, KeyboardActionDelegate, MouseActionDele
         if self.__in_focus:
             self.__game.update()
 
-    def tapped(self):
+    def tapped(self, sender: TapHandler):
         self.__view.game.board.bird.flap()

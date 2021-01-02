@@ -1,5 +1,5 @@
 from abc import ABC
-from typing import Optional, List, Any
+from typing import Optional
 
 import pygame
 
@@ -14,13 +14,17 @@ class KeyboardActionDelegate(ABC):
         pass
 
 
-class KeyboardProcessor(InteractionProcessor):  # pylint: disable=R0903
+class KeyboardProcessor(InteractionProcessor):
     def __init__(self, delegate: Optional[KeyboardActionDelegate]):
         self.delegate = delegate
 
-    def process(self, events: List[Any]):
-        if not self.delegate:
-            return
-        supported = [event for event in events if event.type == pygame.KEYDOWN]
-        for event in supported:
-            self.delegate.key_pressed(event.key)
+    def allows_other(self) -> bool:
+        return True
+
+    def responds(self, events) -> bool:
+        if self.delegate:
+            supported = [event for event in events if event.type == pygame.KEYDOWN]
+            for event in supported:
+                self.delegate.key_pressed(event.key)
+                return True
+        return False
