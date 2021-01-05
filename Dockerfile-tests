@@ -1,7 +1,7 @@
 FROM fnndsc/ubuntu-python3
 COPY requirements.txt ./
-RUN python3 -m pip install -r requirements.txt pytest==4.3.0
+RUN python3 -m pip install -r requirements.txt pytest==4.3.0 pytest-cov==2.6.1
 WORKDIR /root/
 COPY flappy ./flappy
 COPY tests ./tests
-ENTRYPOINT ["pytest", "-v", "tests"]
+ENTRYPOINT ["pytest", "-v", "tests", "--cov", "flappy"]

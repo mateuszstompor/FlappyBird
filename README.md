@@ -1,7 +1,7 @@
 <img src="./screenshots/flappy-bird.png" alt="Game Logo" width="100%"/>
 
-### Lint status
-![Lint](https://github.com/mateuszstompor/FlappyBird/workflows/CI/badge.svg)
+### Build status
+![CI](https://github.com/mateuszstompor/FlappyBird/workflows/CI/badge.svg)
 
 ### Motivation
 The project is an assignment for a python course
