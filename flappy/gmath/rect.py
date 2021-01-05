@@ -33,17 +33,19 @@ class Rect:
 
         @staticmethod
         def from_pygame(rect: PRect):
-            return Rect(Point(rect[0], rect[1]), Size(rect[2], rect[3]))
+            return Rect(Point(*rect[:2]), Size(*rect[2:]))
 
     class Positioner:
         @staticmethod
-        def as_pygame(rect: Rect, screen: Surface) -> PRect:
-            return PRect(rect.origin.x * screen.get_width(),
-                         rect.origin.y * screen.get_height(),
-                         rect.size.width * screen.get_width(),
-                         rect.size.height * screen.get_height())
+        def to_pygame(rect: Rect, screen: PRect) -> PRect:
+            width, height = screen[2:]
+            return PRect(rect.origin.x * width,
+                         rect.origin.y * height,
+                         rect.size.width * width,
+                         rect.size.height * height)
 
         @staticmethod
-        def from_pygame(rect: PRect, screen: Surface) -> Rect:
-            return Rect(Point(rect[0] / screen.get_width(), rect[1] / screen.get_height()),
-                        Size(rect[2] / screen.get_width(), rect[3] / screen.get_height()))
+        def from_pygame(rect: PRect, screen: PRect) -> Rect:
+            width, height = screen[2:]
+            return Rect(Point(rect[0] / width, rect[1] / height),
+                        Size(rect[2] / width, rect[3] / height))
