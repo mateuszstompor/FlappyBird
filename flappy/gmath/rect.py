@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from pygame.surface import Surface
 from pygame.rect import Rect as PRect
 
 from flappy.gmath.ftypes import Size
