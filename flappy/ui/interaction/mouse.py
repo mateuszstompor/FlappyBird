@@ -5,9 +5,9 @@ from typing import Optional
 
 import pygame
 
+from flappy.gmath.rect import Rect
 from flappy.gmath.point import Point
 from flappy.ui.view.general import View
-from flappy.visualizer.conversion.rect import RectConverter
 from flappy.ui.interaction.general import InteractionProcessor
 
 
@@ -41,7 +41,7 @@ class TapHandler(InteractionProcessor):
 
     def interacts(self, point: Point):
         tap_position = point - self.absolute_position(self.__view)
-        rect = RectConverter.convert_from_pygame(self.__view.compose().get_rect())
+        rect = Rect.Converter.from_pygame(self.__view.compose().get_rect())
         return rect.contains(tap_position)
 
     @staticmethod
