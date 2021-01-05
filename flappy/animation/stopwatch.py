@@ -1,10 +1,6 @@
 from time import time
 
 
-class InvalidInvocation(Exception):
-    pass
-
-
 class StopWatch:
     def __init__(self):
         self.__elapsed = 0.0
@@ -33,8 +29,8 @@ class StopWatch:
         return self.__paused
 
     def reset(self):
-        self.stop()
-        self.start()
+        self.__elapsed = 0.0
+        self.__last_start = None if (self.__paused or not self.__last_start) else time()
 
     def stop(self):
         self.__elapsed = 0.0
@@ -42,6 +38,6 @@ class StopWatch:
         self.__paused = False
 
     def start(self):
-        if self.__last_start is not None:
-            raise InvalidInvocation('Timer already started')
+        self.__elapsed = 0.0
+        self.__paused = False
         self.__last_start = time()
