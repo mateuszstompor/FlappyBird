@@ -1,6 +1,6 @@
 <img src="./screenshots/flappy-bird.png" alt="Game Logo" width="100%"/>
 
-### CI
+### Lint status
 ![Lint](https://github.com/mateuszstompor/FlappyBird/workflows/CI/badge.svg)
 
 ### Motivation
