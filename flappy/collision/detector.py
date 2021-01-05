@@ -14,6 +14,6 @@ class CollisionDetector:
             self.collision_notifier.notify([obstacle, board.bird])
 
     @staticmethod
-    def is_colliding(bird: Bird, obstacle: Obstacle):
+    def is_colliding(bird: Bird, obstacle: Obstacle) -> bool:
         return bird.frame.is_overlapping(obstacle.wall.upper) or \
                bird.frame.is_overlapping(obstacle.wall.lower)

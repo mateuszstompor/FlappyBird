@@ -7,8 +7,8 @@ Keyframe = NamedTuple('Keyframe', [('data', Any), ('length', float)])
 
 
 class SequenceAnimation:
-    def __init__(self, keyframes, repeat=False):
-        self.keyframes = keyframes  # type: List[Keyframe]
+    def __init__(self, keyframes: List[Keyframe], repeat=False):
+        self.keyframes = keyframes
         self.repeat = repeat
         self.__timer = StopWatch()
 
