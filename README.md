@@ -1,14 +1,22 @@
 <img src="./screenshots/flappy-bird.png" alt="Game Logo" width="100%"/>
 
+### CI
+![Lint](https://github.com/mateuszstompor/FlappyBird/workflows/CI/badge.svg)
+
+### Motivation
+The project is an assignment for a python course
+
 ### Author
+Idea for the game WAS NOT my invention. Information about the original author can be found below: 
 > Flappy Bird is a mobile game developed by Vietnamese video game artist and programmer Dong Nguyen (Vietnamese: Nguyễn Hà Đông), under his game development company dotGears
 
-Assets was taken from Samuel Custodio's [repository](https://github.com/samuelcust/flappy-bird-assets)
+Assets were taken from Samuel Custodio's [repository](https://github.com/samuelcust/flappy-bird-assets)
 
-### CI
-![CI](https://github.com/mateuszstompor/FlappyBird/workflows/CI/badge.svg)
+### Tech
+* python 3.8
+* pygame 2.0.1
 
-### Running
+### How to use
 ```bash
 python3 -m flappy
 ```
@@ -18,10 +26,10 @@ The game supports both mouse and keyboard usage. Controlling the game with a mou
 Keybindings are listed below: 
 * `q` - quit the game
 * `1` - change bird's color
-* `2` - change background color
+* `2` - change background's color
 * `SPACEBAR` - action button - flap/process to the next screen
 
 ### Gameplay
 <p align="center">
-    <img src="./screenshots/gameplay.gif" alt="Gameplay" width="50%"/>
+    <img src="./screenshots/gameplay.gif" alt="Gameplay" width="45%"/>
 </p>
