@@ -1,10 +1,9 @@
-from flappy.gmath.rect import Rect
-from flappy.gmath.size import Size
 from flappy.scene.bird import Bird
+from flappy.gmath.rect import Rect
 from flappy.scene.board import Board
 from flappy.gmath.point import Point
-from flappy.gmath.frange import Frange
 from flappy.scene.obstacle import Obstacle
+from flappy.gmath.ftypes import Bound, Size
 from flappy.score.counter import ScoreCounter
 from flappy.scene.flight import FlightVelocity
 from flappy.physics.motion import MotionEngine
@@ -14,7 +13,7 @@ from flappy.collision.detector import CollisionDetector
 
 class Game:
     def __init__(self, bird_animation):
-        self.__terrain_generator = TerrainGenerator(Frange(0.1, 0.3), 0.5, Frange(0.4, 0.9))
+        self.__terrain_generator = TerrainGenerator(Bound(0.1, 0.3), 0.5, Bound(0.4, 0.9))
         self.__motion_engine = MotionEngine()
         self.collision_detector = CollisionDetector()
         self.score_counter = ScoreCounter()

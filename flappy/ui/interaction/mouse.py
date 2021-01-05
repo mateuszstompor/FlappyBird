@@ -42,7 +42,7 @@ class TapHandler(InteractionProcessor):
     def interacts(self, point: Point):
         tap_position = point - self.absolute_position(self.__view)
         rect = RectConverter.convert_from_pygame(self.__view.compose().get_rect())
-        return rect.is_in(tap_position)
+        return rect.contains(tap_position)
 
     @staticmethod
     def absolute_position(view: View):

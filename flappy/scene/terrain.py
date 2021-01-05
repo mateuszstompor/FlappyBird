@@ -1,12 +1,12 @@
 from random import uniform, choice
 
 from flappy.gmath.rect import Rect
-from flappy.gmath.frange import Frange
+from flappy.gmath.ftypes import Bound
 from flappy.scene.obstacle import Obstacle
 
 
 class TerrainGenerator:
-    def __init__(self, y_delta: Frange, x_delta: float, bound: Frange):
+    def __init__(self, y_delta: Bound, x_delta: float, bound: Bound):
         self.y_delta = y_delta
         self.x_delta = x_delta
         self.bound = bound

@@ -1,10 +1,11 @@
 import pygame
 
 from pygame.surface import Surface
+
 from flappy.gmath.rect import Rect
-from flappy.gmath.size import Size
 from flappy.scene.bird import Bird
 from flappy.gmath.point import Point
+from flappy.gmath.ftypes import Size
 from flappy.scene.board import Board
 from flappy.scene.obstacle import Obstacle
 from flappy.textures.library import TextureLibrary

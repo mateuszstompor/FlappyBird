@@ -1,6 +1,7 @@
 from typing import NamedTuple
+
 from flappy.gmath.rect import Rect
-from flappy.gmath.size import Size
+from flappy.gmath.ftypes import Size
 from flappy.gmath.point import Point
 
 
