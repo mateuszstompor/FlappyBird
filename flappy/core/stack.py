@@ -1,12 +1,18 @@
 from typing import Any
 
 
+class EmptyStack(Exception):
+    pass
+
+
 class Stack:
     def __init__(self):
         self.__items = []
 
     def pop(self) -> Any:
-        return self.__items.pop(len(self.__items)-1)
+        if self.__items:
+            return self.__items.pop(len(self.__items)-1)
+        raise EmptyStack
 
     def push(self, item: Any):
         self.__items.append(item)
@@ -15,16 +21,9 @@ class Stack:
         self.__items = []
 
     def top(self):
-        return self.__items[len(self.__items) - 1]
-
-    def from_top(self):
-        return iter(self.__items[::-1])
+        if self.__items:
+            return self.__items[len(self.__items) - 1]
+        raise EmptyStack
 
     def from_bottom(self):
         return iter(self.__items)
-
-    def __bool__(self):
-        return bool(self.__items)
-
-    def __len__(self):
-        return len(self.__items)
