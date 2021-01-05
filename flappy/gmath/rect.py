@@ -1,9 +1,8 @@
 from flappy.gmath.size import Size
 from flappy.gmath.point import Point
-from flappy.misc.representable import Representable
 
 
-class Rect(Representable):
+class Rect:
     def __init__(self, origin: Point, size: Size):
         self.origin = origin
         self.size = size

@@ -1,6 +1,5 @@
 from flappy.gmath.rect import Rect
 from flappy.scene.flight import FlightVelocity
-from flappy.misc.representable import Representable
 from flappy.animation.sequence import SequenceAnimation
 from flappy.core.observer.passthrough import PassthroughSubject
 
@@ -12,7 +11,7 @@ class State:  # pylint: disable=R0903
         self.distance = distance
 
 
-class Bird(Representable):  # pylint: disable=R0903
+class Bird:  # pylint: disable=R0903
     def __init__(self, frame: Rect,
                  flight_velocity: FlightVelocity,
                  animation: SequenceAnimation):

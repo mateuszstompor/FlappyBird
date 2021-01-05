@@ -1,7 +1,4 @@
-from flappy.misc.representable import Representable
-
-
-class Point(Representable):
+class Point:
     def __init__(self, x: float, y: float):
         self.x = x  # pylint: disable=C0103
         self.y = y  # pylint: disable=C0103
