@@ -32,7 +32,7 @@ class Game:
         if 100 > len(self.board.obstacles) > 0:
             obstacle = self.__terrain_generator.new(self.board.obstacles[-1])
             self.board.obstacles.append(obstacle)
-        self.collision_detector.check_collisions(self.board)
+        self.collision_detector.detect_collision(self.board)
 
     @staticmethod
     def default_board(bird_animation) -> Board:
