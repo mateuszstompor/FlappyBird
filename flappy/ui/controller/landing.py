@@ -1,25 +1,47 @@
+from functools import reduce
+
 import pygame
 
 from flappy.core.choice import WheelChoice
 from flappy.ui.view.landing import LandingView
 from flappy.ui.system.presenter import Presenter
-from flappy.animation.store import AnimationStore
 from flappy.textures.library import TextureLibrary
 from flappy.ui.controller.general import ViewController
 from flappy.ui.controller.play import PlayViewController
+from flappy.animation.sequence import Keyframe, SequenceAnimation
 from flappy.ui.interaction.mouse import TapHandler, MouseActionDelegate
 from flappy.ui.interaction.keyboard import KeyboardProcessor, KeyboardActionDelegate
+
+
+class BirdAnimationStore:
+    def __init__(self):
+        names = reduce(lambda a, b: a + b, [['{}bird-downflap.png'.format(c),
+                                             '{}bird-midflap.png'.format(c),
+                                             '{}bird-upflap.png'.format(c)]
+                                            for c in self.available_colors()])
+        self.textures = TextureLibrary.with_images(names)
+
+    def bird(self, color):
+        frames = [Keyframe(self.textures.image('{}bird-downflap.png'.format(color)), 0.1),
+                  Keyframe(self.textures.image('{}bird-midflap.png'.format(color)), 0.2),
+                  Keyframe(self.textures.image('{}bird-upflap.png'.format(color)), 0.1)]
+        return SequenceAnimation(frames)
+
+    @staticmethod
+    def available_colors():
+        return ['red', 'yellow', 'blue']
+
+    def all(self):
+        return [self.bird(color) for color in self.available_colors()]
 
 
 class LandingViewController(ViewController, KeyboardActionDelegate, MouseActionDelegate):
     def __init__(self, presenter: Presenter):
         self.__presenter = presenter
-        animation_store = AnimationStore()
+        animation_store = BirdAnimationStore()
         images = TextureLibrary.load_images(['background-day.png', 'background-night.png'])
         self.__backgrounds = WheelChoice(images)
-        self.__bird_animations = WheelChoice([animation_store.blue_bird(),
-                                              animation_store.red_bird(),
-                                              animation_store.yellow_bird()])
+        self.__bird_animations = WheelChoice(animation_store.all())
         self.__view = LandingView(self.__bird_animations.item(), self.__backgrounds.item())
         self.__processors = [
             TapHandler(self.__view.bird_view, delegate=self),
