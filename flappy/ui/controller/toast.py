@@ -4,8 +4,8 @@ from flappy.gmath.point import Point
 from flappy.ui.view.general import View
 from flappy.ui.view.sprite import SpriteView
 from flappy.ui.system.presenter import Presenter
-from flappy.textures.library import TextureLibrary
 from flappy.ui.controller.general import ViewController
+from flappy.assets.textures.library import TextureLibrary
 from flappy.ui.interaction.mouse import TapHandler, MouseActionDelegate
 from flappy.ui.interaction.keyboard import KeyboardProcessor, KeyboardActionDelegate
 

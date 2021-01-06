@@ -2,9 +2,9 @@ from pygame.surface import Surface
 from flappy.gmath.point import Point
 from flappy.ui.view.sprite import SpriteView
 from flappy.ui.view.animated import AnimatedView
-from flappy.textures.library import TextureLibrary
 from flappy.ui.view.blueprint import BlueprintView
 from flappy.animation.sequence import SequenceAnimation
+from flappy.assets.textures.library import TextureLibrary
 
 
 class LandingView(BlueprintView):

@@ -8,7 +8,7 @@ from flappy.gmath.point import Point
 from flappy.gmath.ftypes import Size
 from flappy.scene.board import Board
 from flappy.scene.obstacle import Obstacle
-from flappy.textures.library import TextureLibrary
+from flappy.assets.textures.library import TextureLibrary
 
 
 class Drawer:

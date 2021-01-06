@@ -23,8 +23,11 @@ class KeyboardProcessor(InteractionProcessor):
 
     def responds(self, events) -> bool:
         if self.delegate:
-            supported = [event for event in events if event.type == pygame.KEYDOWN]
+            supported = [event for event in events if event.type in [pygame.KEYDOWN, pygame.KEYUP]]
             for event in supported:
-                self.delegate.key_pressed(event.key)
+                if event.type == pygame.KEYUP:
+                    self.delegate.key_released(event.key)
+                else:
+                    self.delegate.key_pressed(event.key)
                 return True
         return False

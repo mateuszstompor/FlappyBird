@@ -3,7 +3,7 @@ from math import floor
 import pygame
 
 from pygame.surface import Surface
-from flappy.textures.library import TextureLibrary
+from flappy.assets.textures.library import TextureLibrary
 
 
 class ScoreDrawer:

@@ -5,9 +5,9 @@ import pygame
 from flappy.core.choice import WheelChoice
 from flappy.ui.view.landing import LandingView
 from flappy.ui.system.presenter import Presenter
-from flappy.textures.library import TextureLibrary
 from flappy.ui.controller.general import ViewController
 from flappy.ui.controller.play import PlayViewController
+from flappy.assets.textures.library import TextureLibrary
 from flappy.animation.sequence import Keyframe, SequenceAnimation
 from flappy.ui.interaction.mouse import TapHandler, MouseActionDelegate
 from flappy.ui.interaction.keyboard import KeyboardProcessor, KeyboardActionDelegate
