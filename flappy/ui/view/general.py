@@ -1,4 +1,7 @@
-from typing import Optional
+from __future__ import annotations
+
+from typing import Optional, List
+
 from abc import ABC, abstractmethod
 
 from pygame.surface import Surface
@@ -12,7 +15,7 @@ class View(ABC):
         pass
 
     @abstractmethod
-    def subviews(self):
+    def subviews(self) -> List[View]:
         pass
 
     @abstractmethod
@@ -24,5 +27,5 @@ class View(ABC):
         pass
 
     @abstractmethod
-    def parent(self):
+    def parent(self) -> Optional[View]:
         pass
