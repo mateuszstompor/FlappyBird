@@ -7,6 +7,12 @@ Keyframe = NamedTuple('Keyframe', [('data', Any), ('length', float)])
 
 
 class SequenceAnimation:
+    """
+    The class provides a set of methods to retrieve a keyframe
+    from the list based on elapsed time. Animation which is built
+    by that sequence can be paused, resumed and rewound once it
+    finishes
+    """
     def __init__(self, keyframes: List[Keyframe], repeat=False):
         self.keyframes = keyframes
         self.repeat = repeat

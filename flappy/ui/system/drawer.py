@@ -6,6 +6,10 @@ from flappy.ui.view.general import View
 
 
 class ViewDrawer:
+    """
+    Class responsible for composing a flat surface that
+    can be rendered onto the screen based on the view hierarchy
+    """
     def __init__(self, root: Surface):
         self.__root = root
 

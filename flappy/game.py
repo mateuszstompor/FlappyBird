@@ -12,6 +12,10 @@ from flappy.collision.detector import CollisionDetector
 
 
 class Game:
+    """
+    Container for all game components providing
+    ease way to reset it
+    """
     def __init__(self, bird_animation):
         self.__terrain_generator = TerrainGenerator(Bound(0.1, 0.3), 0.5, Bound(0.4, 0.9))
         self.__motion_engine = MotionEngine()

@@ -4,6 +4,9 @@ from flappy.scene.board import Board
 
 
 class MotionEngine:
+    """
+    Responsible for updating position of obstacles and the bird
+    """
     def __init__(self, gravity=1.1, bird_angle_bias=20):
         self.__last_update = time()
         self.__gravity = gravity

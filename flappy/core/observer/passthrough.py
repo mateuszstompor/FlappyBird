@@ -4,6 +4,11 @@ from flappy.core.observer.general import Subject, Observer
 
 
 class PassthroughSubject(Subject):
+    """
+    Subject that does not contain any history
+    of events and provides the subscribers only with
+    the latest one
+    """
     def __init__(self):
         self.__observers = set()  # type: Set[Observer]
 

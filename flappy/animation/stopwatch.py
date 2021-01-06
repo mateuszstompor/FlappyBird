@@ -2,6 +2,10 @@ from time import time
 
 
 class StopWatch:
+    """
+    The class is capable of measuring elapsed time, including resetting it, pausing
+    and resuming
+    """
     def __init__(self):
         self.__elapsed = 0.0
         self.__last_start = None

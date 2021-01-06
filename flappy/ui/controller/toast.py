@@ -11,6 +11,11 @@ from flappy.ui.interaction.keyboard import KeyboardProcessor, KeyboardActionDele
 
 
 class ToastViewController(ViewController, KeyboardActionDelegate, MouseActionDelegate):
+    """
+    Controller that renders its view on top of its background without
+    clearing it previously. May be used for providing the user
+    with advices
+    """
     def __init__(self, presenter: Presenter, image_name: str, parent: View):
         self.__image = TextureLibrary.load_images([image_name])[0]
         self.__view = SpriteView.centered_in(parent, self.__image, Point(0, 0))

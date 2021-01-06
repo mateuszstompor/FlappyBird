@@ -6,6 +6,10 @@ from flappy.scene.obstacle import Obstacle
 
 
 class TerrainGenerator:
+    """
+    Component responsible for rendering new obstacles based
+    on the current scene's look
+    """
     def __init__(self, y_delta: Bound, x_delta: float, bound: Bound):
         self.y_delta = y_delta
         self.x_delta = x_delta

@@ -7,6 +7,11 @@ from flappy.ui.interaction.general import InteractionProcessor
 
 
 class KeyboardActionDelegate(ABC):
+    """
+    Interface of optional methods that a delegate
+    can implement in order to be informed about
+    keyboard events
+    """
     def key_pressed(self, key):
         pass
 
@@ -15,6 +20,10 @@ class KeyboardActionDelegate(ABC):
 
 
 class KeyboardProcessor(InteractionProcessor):
+    """
+    Responsible for handling keyboard events. If an event
+    is recognized as supported the delegate is notified
+    """
     def __init__(self, delegate: Optional[KeyboardActionDelegate]):
         self.delegate = delegate
 
