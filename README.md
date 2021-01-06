@@ -28,7 +28,8 @@ python3 -m flappy
 ```
 
 ### Controls
-The game supports both mouse and keyboard usage. Controlling the game with a mouse is straightforward and does not require additional explanation.
+The game supports both mouse and keyboard usage. 
+Controlling the game with a mouse is straightforward and does not require additional explanation.
 Keybindings are listed below: 
 * `q` - quit the game
 * `1` - change bird's color
@@ -36,7 +37,12 @@ Keybindings are listed below:
 * `SPACEBAR` - action button - flap/process to the next screen
 
 ### Gameplay
-💥 Sound effects included
 <p align="center">
     <img src="./screenshots/gameplay.gif" alt="Gameplay" width="45%"/>
 </p>
+
+Even though you cannot hear it the game supports sound effects... 💥
+
+### TBD
+* Collision detection between the bird and obstacles should be more accurate 
+* In the original project instead of falling infinitely down the bird was stopped by a pavement
