@@ -24,5 +24,5 @@ class BlueprintView(View):
     def offset(self) -> Point:
         return self._offset
 
-    def parent(self) -> Optional[View]:
+    def parent_view(self) -> Optional[View]:
         return self._parent

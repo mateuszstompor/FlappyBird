@@ -27,5 +27,5 @@ class View(ABC):
         pass
 
     @abstractmethod
-    def parent(self) -> Optional[View]:
+    def parent_view(self) -> Optional[View]:
         pass
