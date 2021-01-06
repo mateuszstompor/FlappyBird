@@ -1,6 +1,9 @@
-from flappy.scene.bird import Bird
+from functools import reduce
+
+from typing import List
+
+from flappy.gmath.rect import Rect
 from flappy.scene.board import Board
-from flappy.scene.obstacle import Obstacle
 from flappy.core.observer.passthrough import PassthroughSubject
 
 
@@ -8,12 +11,12 @@ class CollisionDetector:
     def __init__(self):
         self.collision_notifier = PassthroughSubject()
 
-    def check_collisions(self, board: Board):
-        colliding_objects = [o for o in board.obstacles if self.is_colliding(board.bird, o)]
-        for obstacle in colliding_objects:
-            self.collision_notifier.notify([obstacle, board.bird])
+    def detect_collision(self, board: Board):
+        obstacles = [[obstacle.wall.lower, obstacle.wall.upper]
+                     for obstacle in board.obstacles]
+        if self.is_colliding(board.bird.frame, reduce(lambda a, b: a + b, obstacles)):
+            self.collision_notifier.notify(None)
 
     @staticmethod
-    def is_colliding(bird: Bird, obstacle: Obstacle) -> bool:
-        return bird.frame.is_overlapping(obstacle.wall.upper) or \
-               bird.frame.is_overlapping(obstacle.wall.lower)
+    def is_colliding(rect: Rect, against: List[Rect]) -> bool:
+        return any([rect.is_overlapping(obstacle) for obstacle in against])
