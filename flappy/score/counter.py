@@ -16,7 +16,7 @@ class ScoreCounter:
             self.point_gained.notify(new_score)
             self.__score = new_score
 
-    def score(self):
+    def score(self) -> int:
         return self.__score
 
     def reset(self):

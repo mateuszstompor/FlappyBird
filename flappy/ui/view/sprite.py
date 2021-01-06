@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Optional
 
 from pygame.surface import Surface
@@ -17,7 +19,7 @@ class SpriteView(BlueprintView):
         return self.image
 
     @staticmethod
-    def centered_in(view: View, image: Surface, offset: Point):
+    def centered_in(view: View, image: Surface, offset: Point) -> SpriteView:
         background = view.compose()
         rect = centered_rect(image, background.get_rect(), x_axis=True, y_axis=True)
         return SpriteView(view, Point(*rect[:2]) + offset, image)

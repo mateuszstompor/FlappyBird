@@ -26,7 +26,7 @@ class Drawer:
             if Drawer.is_in_sight(obstacle, Rect(Point(-1, 0), Size(3, 1))):
                 self.present_wall(surface, obstacle, self.obstacle_image(index))
 
-    def obstacle_image(self, obstacle_number: int):
+    def obstacle_image(self, obstacle_number: int) -> Surface:
         image_name = 'pipe-green.png'
         if (obstacle_number + 1) % 5 == 0 and obstacle_number > 0:
             image_name = 'pipe-red.png'
@@ -56,7 +56,7 @@ class Drawer:
         surface.blit(scaled, rect)
 
     @staticmethod
-    def is_in_sight(obstacle: Obstacle, sight: Rect):
+    def is_in_sight(obstacle: Obstacle, sight: Rect) -> bool:
         return sight.is_overlapping(obstacle.wall.upper) or \
                sight.is_overlapping(obstacle.wall.lower) or \
                obstacle.wall.upper.is_overlapping(sight) or \

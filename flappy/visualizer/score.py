@@ -1,4 +1,5 @@
 from math import floor
+from typing import List
 
 import pygame
 
@@ -22,5 +23,5 @@ class ScoreDrawer:
             surface.blit(j_image, pygame.rect.Rect(screen_rect[2] / 2 - 25, 40, 40, 40))
 
     @staticmethod
-    def image_names():
+    def image_names() -> List[str]:
         return [f'{i}.png' for i in range(10)]
