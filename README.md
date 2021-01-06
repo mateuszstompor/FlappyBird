@@ -4,7 +4,7 @@
 ![CI](https://github.com/mateuszstompor/FlappyBird/workflows/CI/badge.svg)
 
 ### Motivation
-The project is an assignment for a python course
+The project is an assignment for a python course 🐍
 
 ### Author
 Idea for the game WAS NOT my invention. Information about the original author can be found below: 
@@ -17,6 +17,12 @@ Assets were taken from Samuel Custodio's [repository](https://github.com/samuelc
 * pygame 2.0.1
 
 ### How to use
+* Clone the repository
+* Install requirements calling:
+```bash
+pip install -r requirements.txt
+```
+* Switch to python 3.8 if you haven't done it already and then run:
 ```bash
 python3 -m flappy
 ```
@@ -30,6 +36,7 @@ Keybindings are listed below:
 * `SPACEBAR` - action button - flap/process to the next screen
 
 ### Gameplay
+💥 Sound effects included
 <p align="center">
     <img src="./screenshots/gameplay.gif" alt="Gameplay" width="45%"/>
 </p>
