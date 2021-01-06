@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, List, Iterable
 
 
 class EmptyStack(Exception):
@@ -7,7 +7,7 @@ class EmptyStack(Exception):
 
 class Stack:
     def __init__(self):
-        self.__items = []
+        self.__items = []  # type: List[Any]
 
     def pop(self) -> Any:
         if self.__items:
@@ -20,10 +20,10 @@ class Stack:
     def clear(self):
         self.__items = []
 
-    def top(self):
+    def top(self) -> Any:
         if self.__items:
             return self.__items[len(self.__items) - 1]
         raise EmptyStack
 
-    def from_bottom(self):
+    def from_bottom(self) -> Iterable[Any]:
         return iter(self.__items)

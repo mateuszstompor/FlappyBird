@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pygame
 
 from flappy.assets.pathfinder import PathFinder
@@ -11,7 +13,7 @@ class Player:
         pygame.mixer.Sound.play(self.__data[sound])
 
     @staticmethod
-    def with_sounds(names):
+    def with_sounds(names) -> Player:
         data = {}
         for name in names:
             path = PathFinder.audio(name)

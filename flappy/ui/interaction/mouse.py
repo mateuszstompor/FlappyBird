@@ -39,13 +39,13 @@ class TapHandler(InteractionProcessor):
     def allows_other(self) -> bool:
         return False
 
-    def interacts(self, point: Point):
+    def interacts(self, point: Point) -> int:
         tap_position = point - self.absolute_position(self.__view)
         rect = Rect.Converter.from_pygame(self.__view.compose().get_rect())
         return rect.contains(tap_position)
 
     @staticmethod
-    def absolute_position(view: View):
+    def absolute_position(view: View) -> Point:
         offset, current_view = Point(0, 0), view
         while current_view:
             offset += current_view.offset()

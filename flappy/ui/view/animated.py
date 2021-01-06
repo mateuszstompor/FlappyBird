@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Optional
 
 from pygame.surface import Surface
@@ -20,7 +22,7 @@ class AnimatedView(BlueprintView):
         return self.animation.data()
 
     @staticmethod
-    def centered_in(view: View, animation: SequenceAnimation, offset: Point):
+    def centered_in(view: View, animation: SequenceAnimation, offset: Point) -> AnimatedView:
         background = view.compose()
         rect = centered_rect(animation.data(), background.get_rect(), x_axis=True, y_axis=True)
         return AnimatedView(view, Point(*rect[:2]) + offset, animation)

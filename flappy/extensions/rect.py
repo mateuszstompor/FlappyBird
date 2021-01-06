@@ -18,10 +18,10 @@ def y_adding(rect: Rect, delta: float) -> Rect:
     return Rect(rect[0], rect[1] + delta, *rect[2:])
 
 
-def adding(rect: Rect, point: Point):
+def adding(rect: Rect, point: Point) -> Rect:
     return x_adding(y_adding(rect, point.y), point.x)
 
 
-def center(rect: Rect, inside: Rect, x_axis: bool = False, y_axis: bool = False):
+def center(rect: Rect, inside: Rect, x_axis: bool = False, y_axis: bool = False) -> Rect:
     rect = x_centered(rect, inside) if x_axis else rect
     return y_centered(rect, inside) if y_axis else rect

@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, List
 
 from pygame.surface import Surface
 
@@ -12,7 +12,7 @@ class BlueprintView(View):
         self._parent = parent
         self._subviews = []
 
-    def subviews(self):
+    def subviews(self) -> List[View]:
         return self._subviews
 
     def add_subview(self, view):
@@ -24,5 +24,5 @@ class BlueprintView(View):
     def offset(self) -> Point:
         return self._offset
 
-    def parent(self):
+    def parent(self) -> Optional[View]:
         return self._parent
