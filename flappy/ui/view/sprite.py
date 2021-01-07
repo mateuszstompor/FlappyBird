@@ -6,8 +6,8 @@ from pygame.surface import Surface
 
 from flappy.gmath.point import Point
 from flappy.ui.view.general import View
+from flappy.ui.layout.composer import Layout
 from flappy.ui.view.blueprint import BlueprintView
-from flappy.extensions.surface import centered_rect
 
 
 class SpriteView(BlueprintView):
@@ -24,5 +24,5 @@ class SpriteView(BlueprintView):
     @staticmethod
     def centered_in(view: View, image: Surface, offset: Point) -> SpriteView:
         background = view.compose()
-        rect = centered_rect(image, background.get_rect(), x_axis=True, y_axis=True)
+        rect = Layout(image.get_rect()).center(background.get_rect()).rect
         return SpriteView(view, Point(*rect[:2]) + offset, image)
