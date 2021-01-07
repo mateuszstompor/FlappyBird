@@ -6,8 +6,8 @@ from pygame.surface import Surface
 
 from flappy.gmath.point import Point
 from flappy.ui.view.general import View
+from flappy.ui.layout.composer import Layout
 from flappy.ui.view.blueprint import BlueprintView
-from flappy.extensions.surface import centered_rect
 from flappy.animation.sequence import SequenceAnimation
 
 
@@ -27,5 +27,5 @@ class AnimatedView(BlueprintView):
     @staticmethod
     def centered_in(view: View, animation: SequenceAnimation, offset: Point) -> AnimatedView:
         background = view.compose()
-        rect = centered_rect(animation.data(), background.get_rect(), x_axis=True, y_axis=True)
+        rect = Layout(animation.data().get_rect()).center(background.get_rect()).rect
         return AnimatedView(view, Point(*rect[:2]) + offset, animation)
