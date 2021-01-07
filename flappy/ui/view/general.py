@@ -10,6 +10,11 @@ from flappy.gmath.point import Point
 
 
 class View(ABC):
+    """
+    Interface of a view that can be rendered onto the screen.
+    Root view is the one that has no parent. A view can have
+    arbitrary number of children
+    """
     @abstractmethod
     def compose(self) -> Optional[Surface]:
         pass

@@ -14,6 +14,10 @@ from flappy.ui.interaction.keyboard import KeyboardProcessor, KeyboardActionDele
 
 
 class BirdAnimationStore:
+    """
+    Helper created for providing bird animations based on provided
+    feather color
+    """
     def __init__(self):
         names = reduce(lambda a, b: a + b, [['{}bird-downflap.png'.format(c),
                                              '{}bird-midflap.png'.format(c),
@@ -36,6 +40,10 @@ class BirdAnimationStore:
 
 
 class LandingViewController(ViewController, KeyboardActionDelegate, MouseActionDelegate):
+    """
+    Responsible for handling user interaction and navigation on the
+    landing page
+    """
     def __init__(self, presenter: Presenter):
         self.__presenter = presenter
         animation_store = BirdAnimationStore()
@@ -63,10 +71,10 @@ class LandingViewController(ViewController, KeyboardActionDelegate, MouseActionD
         self.__presenter.push(PlayViewController(self.__presenter, animation, background))
 
     def switch_background(self):
-        self.__view.set_background(self.__backgrounds.next_item())
+        self.__view.set_background(next(self.__backgrounds))
 
     def switch_bird(self):
-        self.__view.set_bird_animation(self.__bird_animations.next_item())
+        self.__view.set_bird_animation(next(self.__bird_animations))
 
     def key_pressed(self, key):
         if key == pygame.K_SPACE:

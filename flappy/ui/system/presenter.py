@@ -8,6 +8,10 @@ from flappy.ui.controller.general import ViewController
 
 
 class Presenter:
+    """
+    Manages stack of controllers providing them with focus
+    and a way to navigate from one view to another
+    """
     def __init__(self, drawer: ViewDrawer):
         self.__drawer = drawer
         self.__controllers = Stack()

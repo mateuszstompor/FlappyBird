@@ -9,6 +9,10 @@ from flappy.gmath.point import Point
 
 
 class Rect:
+    """
+    Rect is a composition of origin point - describing left, upper point - and
+    associated size
+    """
     def __init__(self, origin: Point, size: Size):
         self.origin = origin
         self.size = size
@@ -28,6 +32,9 @@ class Rect:
                self.origin.y + self.size.height >= point.y >= self.origin.y
 
     class Converter:
+        """
+        Converts pygame.rect.Rect to flappy.gmath.rect.Rect back and fourth
+        """
         @staticmethod
         def to_pygame(rect: Rect) -> PRect:
             return PRect(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height)
@@ -37,6 +44,9 @@ class Rect:
             return Rect(Point(*rect[:2]), Size(*rect[2:]))
 
     class Positioner:
+        """
+        Converts [0, 1] bound of a rect to the screen bound back and fourth
+        """
         @staticmethod
         def to_pygame(rect: Rect, screen: PRect) -> PRect:
             width, height = screen[2:]

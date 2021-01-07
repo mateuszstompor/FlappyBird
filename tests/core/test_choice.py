@@ -24,9 +24,9 @@ def test_item(collection):
 class TestNextItem:
     def test_returned_value(self, collection, next_item_mapping):
         current = collection.item()
-        assert collection.next_item() == next_item_mapping[current]
+        assert next(collection) == next_item_mapping[current]
 
     def test_iteration(self, collection, next_item_mapping):
         current = collection.item()
-        collection.next_item()
+        next(collection)
         assert collection.item() == next_item_mapping[current]

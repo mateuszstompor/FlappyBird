@@ -8,6 +8,10 @@ from flappy.assets.textures.library import TextureLibrary
 
 
 class ScoreDrawer:
+    """
+    Responsible for drawing score on the play screen.
+    Supports numbers consisting of up to two digits
+    """
     def __init__(self):
         self.__textures = TextureLibrary.with_images(ScoreDrawer.image_names())
 

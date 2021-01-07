@@ -12,6 +12,10 @@ from flappy.assets.textures.library import TextureLibrary
 
 
 class Drawer:
+    """
+    Helper class easing presentation of objects onto
+    the main background
+    """
     def __init__(self):
         self.textures = TextureLibrary.with_images(['pipe-green.png',
                                                     'pipe-red.png',

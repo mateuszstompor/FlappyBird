@@ -4,6 +4,9 @@ from typing import Any
 
 
 class Point:
+    """
+    Represents mutable point in two-dimensional space
+    """
     def __init__(self, x: float, y: float):
         self.x = x  # pylint: disable=C0103
         self.y = y  # pylint: disable=C0103

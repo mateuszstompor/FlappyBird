@@ -8,6 +8,10 @@ from flappy.core.observer.passthrough import PassthroughSubject
 
 
 class CollisionDetector:
+    """
+    Analyzes positions of obstacles and the bird. Notifies its
+    subscribers once a collision is detected
+    """
     def __init__(self):
         self.collision_notifier = PassthroughSubject()
 

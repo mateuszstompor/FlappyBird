@@ -5,6 +5,9 @@ from flappy.core.observer.passthrough import PassthroughSubject
 
 
 class State:  # pylint: disable=R0903
+    """
+    Mutable structure holding flight parameters of a given bird
+    """
     def __init__(self, velocity: float = 0, angle: float = 0, distance: float = 0):
         self.velocity = velocity
         self.angle = angle
@@ -12,6 +15,10 @@ class State:  # pylint: disable=R0903
 
 
 class Bird:  # pylint: disable=R0903
+    """
+    Describes look and flight capabilities of a given
+    bird as well as its state
+    """
     def __init__(self, frame: Rect,
                  flight_velocity: FlightVelocity,
                  animation: SequenceAnimation):

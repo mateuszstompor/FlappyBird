@@ -12,6 +12,11 @@ from flappy.ui.interaction.general import InteractionProcessor
 
 
 class MouseActionDelegate(ABC):
+    """
+    Interface of optional methods that a delegate
+    can implement in order to be informed about
+    mouse clicks
+    """
     def tapped(self, sender: TapHandler):
         pass
 
@@ -20,6 +25,10 @@ class MouseActionDelegate(ABC):
 
 
 class TapHandler(InteractionProcessor):
+    """
+    Responsible for handling mouse events. If an event
+    is recognized as supported the delegate is notified
+    """
     def __init__(self, view: View, delegate: Optional[MouseActionDelegate]):
         self.__view = view
         self.delegate = delegate

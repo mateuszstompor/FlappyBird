@@ -11,6 +11,9 @@ from flappy.extensions.surface import centered_rect
 
 
 class SpriteView(BlueprintView):
+    """
+    View capable of presenting still sprite
+    """
     def __init__(self, parent: Optional[View], offset: Point, image: Surface):
         super().__init__(parent, offset)
         self.image = image

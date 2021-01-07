@@ -12,6 +12,9 @@ from flappy.animation.sequence import SequenceAnimation
 
 
 class AnimatedView(BlueprintView):
+    """
+    View capable of presenting animated sprite
+    """
     def __init__(self, parent: Optional[View], offset: Point, animation: SequenceAnimation):
         super().__init__(parent, offset)
         self.__parent = parent

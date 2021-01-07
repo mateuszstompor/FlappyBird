@@ -2,10 +2,17 @@ from typing import Any, List, Iterable
 
 
 class EmptyStack(Exception):
-    pass
+    """
+    An exception raised when the user attempts
+    to read an element from an empty stack
+    """
 
 
 class Stack:
+    """
+    List wrapper limiting its interface and providing methods
+    for stack manipulation
+    """
     def __init__(self):
         self.__items = []  # type: List[Any]
 

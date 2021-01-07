@@ -14,6 +14,9 @@ from flappy.ui.interaction.keyboard import KeyboardProcessor, KeyboardActionDele
 
 
 class PlayViewController(ViewController, KeyboardActionDelegate, MouseActionDelegate, Observer):
+    """
+    Controller handling user interaction once the user start the game
+    """
     def __init__(self, presenter: Presenter, bird_animation, background):
         self.__game = Game(bird_animation)
         self.__view = PlayView(background, self.__game)

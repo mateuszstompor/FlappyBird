@@ -9,6 +9,11 @@ from flappy.ui.view.blueprint import BlueprintView
 
 
 class PlayView(BlueprintView):
+    """
+    Presented when the game is started. Composes
+    image consisting of a bird, background, obstacles
+    and user's score
+    """
     def __init__(self, background, game):
         super().__init__(None, Point(0, 0))
         self.game = game

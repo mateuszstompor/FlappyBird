@@ -5,6 +5,10 @@ from flappy.sfx.player import Player
 
 
 class GameAudio(Observer):
+    """
+    Listens for different kinds of events happening during
+    the game and playing appropriate sound effects
+    """
     def __init__(self, flap_subject, collision_subject, score_subject):
         self.player = Player.with_sounds(['wing.wav', 'hit.wav', 'point.wav'])
         self.flap_subject = flap_subject

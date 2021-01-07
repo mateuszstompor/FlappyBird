@@ -8,6 +8,11 @@ from flappy.assets.textures.library import TextureLibrary
 
 
 class LandingView(BlueprintView):
+    """
+    View presented as soon as the game is launched. Provides
+    methods to manipulate bird color and background based on
+    the user's preferences
+    """
     def __init__(self, bird_animation: SequenceAnimation, background: Surface):
         super().__init__(None, Point(0, 0))
         self.background = background

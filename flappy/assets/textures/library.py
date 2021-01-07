@@ -8,6 +8,10 @@ from flappy.assets.pathfinder import PathFinder
 
 
 class TextureLibrary:
+    """
+    Loads images from assets to cache based on their names and
+    provides retrieval based on the same criterion
+    """
     def __init__(self, data: Dict[str, pygame.Surface]):
         self.__data = data
 

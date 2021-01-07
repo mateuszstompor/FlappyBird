@@ -6,6 +6,11 @@ from flappy.core.observer.passthrough import PassthroughSubject
 
 
 class ScoreCounter:
+    """
+    Counts score that the user gained based on the
+    distance that the bird travelled and obstacles
+    that were passed
+    """
     def __init__(self):
         self.point_gained = PassthroughSubject()  # type: Subject
         self.__score = 0

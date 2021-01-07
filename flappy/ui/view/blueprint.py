@@ -7,6 +7,10 @@ from flappy.ui.view.general import View
 
 
 class BlueprintView(View):
+    """
+    A view providing implementation of methods common for
+    all views
+    """
     def __init__(self, parent: Optional[View], offset: Point):
         self._offset = offset
         self._parent = parent
