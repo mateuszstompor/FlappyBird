@@ -37,8 +37,9 @@ Keybindings are listed below:
 * `SPACEBAR` - action button - flap/process to the next screen
 
 ### Gameplay
+Unmodified version of the gif can be found [here](./screenshots/gameplay.gif)
 <p align="center">
-    <img src="./screenshots/gameplay.gif" alt="Gameplay" width="45%"/>
+    <img src="./screenshots/art.gif" alt="Gameplay" width="100%"/>
 </p>
 
 Even though you cannot hear it the game supports sound effects... 💥
